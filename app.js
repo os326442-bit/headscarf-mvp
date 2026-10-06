@@ -140,7 +140,7 @@ function chooseFinish(button){
   state.finish=button.dataset.finish==="none"?"נקי":
     button.dataset.finish==="tiara"?"נזר בד":
     button.dataset.finish==="fringe"?"פרנזים":"שרשרת";
-  state.price=basePrice()+Math.max(0,state.fabrics.length-1)*25+(+button.dataset.add||0);
+  state.price=basePrice()+Math.max(0,state.fabrics.length-1)*40+(+button.dataset.add||0);
   $("#finalPrice").textContent=state.price;
   $("#summaryShape").textContent=state.shape;
   $("#summaryPattern").textContent=state.pattern==="single"?"בד ראשוני בלבד":state.pattern==="a"?"תבנית א׳":"תבנית ב׳";
@@ -167,7 +167,7 @@ document.addEventListener("click",event=>{
     const item=swatch.dataset.group+":"+swatch.dataset.name;
     if(swatch.classList.contains("selected"))state.fabrics.push(item);
     else state.fabrics=state.fabrics.filter(x=>x!==item);
-    state.price=basePrice()+Math.max(0,state.fabrics.length-1)*25;
+    state.price=basePrice()+Math.max(0,state.fabrics.length-1)*40;
     updatePrice();updateNote();return;
   }
 
