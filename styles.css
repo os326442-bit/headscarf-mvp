@@ -106,3 +106,7 @@ body.flow-started #landing{display:none!important}
 /* Center the single bow pattern choice */
 #pattern .pattern-grid.single-option{display:flex;justify-content:center}
 #pattern .pattern-grid.single-option .pattern-card{width:min(100%,360px)}
+
+/* Force true centering for the single bow choice */
+#pattern .pattern-grid.single-option{display:grid!important;grid-template-columns:minmax(260px,360px)!important;justify-content:center!important;justify-items:center!important;width:100%!important;margin-left:auto!important;margin-right:auto!important}
+#pattern .pattern-grid.single-option .pattern-card{width:100%!important;max-width:360px!important;margin-left:auto!important;margin-right:auto!important;justify-self:center!important}
