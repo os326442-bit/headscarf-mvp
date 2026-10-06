@@ -93,3 +93,7 @@ body.flow-started #landing{display:none!important}
 
 /* Bandana uses the same square divisions as triangle, at a smaller scale */
 .pattern-visual.triangle-pattern.bandana-pattern:before{width:135px!important;height:135px!important}
+
+/* Ribbon uses the same divisions as long, at a smaller scale */
+.pattern-visual.long-pattern.ribbon-pattern:before{width:190px!important;height:76px!important}
+.pattern-visual.long-pattern.ribbon-pattern.pattern-3:after{height:38px!important}
