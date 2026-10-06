@@ -13,7 +13,11 @@ function show(id){
   if(!target)return;
   $$(".screen").forEach(screen=>screen.classList.remove("active"));
   target.classList.add("active");
-  document.body.classList.toggle("flow-started",id!=="landing");
+  if(id!=="landing"){
+    document.body.classList.add("flow-started");
+    document.getElementById("landing")?.remove();
+    document.querySelector(".topbar")?.remove();
+  }
   updateProgress();
   window.scrollTo({top:0,behavior:"smooth"});
 }
