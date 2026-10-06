@@ -14,8 +14,8 @@ const backStack=[];
 function restartDesign(){
   state.cover=null;state.shape="משולש קטן";state.pattern="single";state.finish="נקי";state.price=89;state.fabrics=[];
   backStack.length=0;
-  $(".swatch.selected").forEach(x=>x.classList.remove("selected"));
-  $(".rating button.active,.yesno button.active").forEach(x=>x.classList.remove("active"));
+  $$(".swatch.selected").forEach(x=>x.classList.remove("selected"));
+  $$(".rating button.active,.yesno button.active").forEach(x=>x.classList.remove("active"));
   show("landing");
 }
 
