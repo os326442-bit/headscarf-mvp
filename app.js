@@ -166,11 +166,15 @@ function renderPatterns(){
   const box=document.querySelector("#pattern .pattern-grid");
   if(!box)return;
   const isTriangle=state.shape==="משולש";
-  box.innerHTML=isTriangle
-    ? `<button class="pattern-card" data-pattern="single"><div class="pattern-visual triangle-pattern pattern-1"></div><strong>תבנית 1 — בד אחד</strong><span>ריבוע שלם מבד אחד.</span></button>
-       <button class="pattern-card" data-pattern="a"><div class="pattern-visual triangle-pattern pattern-2"></div><strong>תבנית 2 — שני בדים</strong><span>בד מרכזי עם מסגרת חיצונית מבד שני.</span></button>
-       <button class="pattern-card" data-pattern="b"><div class="pattern-visual triangle-pattern pattern-3"></div><strong>תבנית 3 — שלושה בדים</strong><span>שני משולשים שווים ומסגרת חיצונית דקה מבד שלישי.</span></button>`
-    : `<button class="pattern-card" data-pattern="single"><div class="pattern-visual long-pattern pattern-1"></div><strong>תבנית 1 — מלבן פשוט</strong><span>מלבן אחד, בד אחד.</span></button>
+  const isBandana=state.shape==="בנדנה";
+  if(isTriangle || isBandana){
+    const sizeClass=isBandana?" bandana-pattern":"";
+    box.innerHTML=`<button class="pattern-card" data-pattern="single"><div class="pattern-visual triangle-pattern${sizeClass} pattern-1"></div><strong>תבנית 1 — בד אחד</strong><span>ריבוע שלם מבד אחד.</span></button>
+       <button class="pattern-card" data-pattern="a"><div class="pattern-visual triangle-pattern${sizeClass} pattern-2"></div><strong>תבנית 2 — שני בדים</strong><span>בד מרכזי עם מסגרת חיצונית מבד שני.</span></button>
+       <button class="pattern-card" data-pattern="b"><div class="pattern-visual triangle-pattern${sizeClass} pattern-3"></div><strong>תבנית 3 — שלושה בדים</strong><span>שני משולשים שווים ומסגרת חיצונית דקה מבד שלישי.</span></button>`;
+    return;
+  }
+  box.innerHTML=`<button class="pattern-card" data-pattern="single"><div class="pattern-visual long-pattern pattern-1"></div><strong>תבנית 1 — מלבן פשוט</strong><span>מלבן אחד, בד אחד.</span></button>
        <button class="pattern-card" data-pattern="a"><div class="pattern-visual long-pattern pattern-2"></div><strong>תבנית 2 — חלוקה אופקית</strong><span>חלק עליון בד אחד, חלק תחתון בד שני.</span></button>
        <button class="pattern-card" data-pattern="b"><div class="pattern-visual long-pattern pattern-3"></div><strong>תבנית 3 — חלוקה משולבת</strong><span>החלק העליון בד אחד, והתחתון מתחלק 50/50 לשני בדים.</span></button>`;
 }
