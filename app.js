@@ -1,7 +1,7 @@
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 
 const state={cover:null,shape:"משולש קטן",pattern:"single",finish:"נקי",price:89,fabrics:[]};
-function basePrice(){return state.fabrics.some(x=>x.startsWith("print:")||x.startsWith("lace:"))?100:89;}
+function basePrice(){const first=state.fabrics[0]||"";return first.startsWith("print:")||first.startsWith("lace:")?100:89;}
 
 const forms={
   full:[["long","לונג"],["triangle","משולש"]],
