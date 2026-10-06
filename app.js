@@ -12,7 +12,7 @@ const forms={
 function _show(id){
   const target=$("#"+id);
   if(!target)return;
-  $(" .screen".trim()).forEach(screen=>{
+  $(".screen").forEach(screen=>{
     screen.classList.remove("active");
     screen.hidden=true;
   });
