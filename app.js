@@ -140,4 +140,5 @@ document.addEventListener("click",event=>{
 
 renderSwatches();
 updatePrice();
+$(".screen").forEach(screen=>{screen.hidden=!screen.classList.contains("active");});
 updateProgress();
