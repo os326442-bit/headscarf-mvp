@@ -183,7 +183,7 @@ document.addEventListener("click",event=>{
   const yesno=event.target.closest(".yesno button");
   if(yesno){$$(".yesno button").forEach(x=>x.classList.remove("active"));yesno.classList.add("active");return;}
 
-  if(event.target.closest("#thanks"))alert("תודה! המשוב נשמר כחלק מחוויית ה-MVP.");
+  if(event.target.closest("#thanks")){    const rating=$(".rating button.active")?.textContent||"לא נבחר";    const textareas=$("#feedback textarea");    const favorite=textareas[0]?.value.trim()||"לא נכתב";    const improvement=textareas[1]?.value.trim()||"לא נכתב";    const interest=$("#feedback .yesno button.active")?.textContent||"לא נבחר";    const inputs=$("#feedback input");    const name=inputs[0]?.value.trim()||"לא נכתב";    const contact=inputs[1]?.value.trim()||"לא נכתב";    const message=[      "משוב חדש — זיו פנייך",      "",      "⭐ דירוג: "+rating+"/5",      "",      "מה הכי אהבת בתהליך?",      favorite,      "",      "הערות לשיפור השירות או החוויה:",      improvement,      "",      "האם היית רוצה לעצב מטפחת כזו באמת?",      interest,      "",      "שם:",      name,      "",      "טלפון / אימייל:",      contact    ].join("\\n");    window.location.href="https://wa.me/972506334993?text="+encodeURIComponent(message);    return;  }
   if(event.target.closest("#restart"))location.reload();
 });
 
