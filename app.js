@@ -1,7 +1,7 @@
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 
-const state={cover:null,shape:"משולש קטן",pattern:"single",finish:"נקי",price:89,fabrics:[]};
-function basePrice(){const first=state.fabrics[0]||"";return first.startsWith("print:")||first.startsWith("lace:")?100:89;}
+const state={cover:null,shape:"משולש קטן",pattern:"single",finish:"נקי",price:109,fabrics:[]};
+function basePrice(){const first=state.fabrics[0]||"";return first.startsWith("print:")||first.startsWith("lace:")?119:109;}
 
 const forms={
   full:[["long","לונג"],["triangle","משולש"]],
@@ -12,7 +12,7 @@ const forms={
 const backStack=[];
 
 function restartDesign(){
-  state.cover=null;state.shape="משולש קטן";state.pattern="single";state.finish="נקי";state.price=89;state.fabrics=[];
+  state.cover=null;state.shape="משולש קטן";state.pattern="single";state.finish="נקי";state.price=109;state.fabrics=[];
   backStack.length=0;
   $$(".swatch.selected").forEach(x=>x.classList.remove("selected"));
   $$(".rating button.active,.yesno button.active").forEach(x=>x.classList.remove("active"));
@@ -189,7 +189,7 @@ function renderPatterns(){
 function choosePattern(value){
   state.pattern=value;
   state.fabrics=[];
-  state.price=89;
+  state.price=109;
   show("fabrics");
   updatePrice();
   renderLivePreview();
@@ -219,7 +219,7 @@ function chooseFinish(button){
   state.finish=button.dataset.finish==="none"?"נקי":
     button.dataset.finish==="tiara"?"נזר בד":
     button.dataset.finish==="fringe"?"פרנזים":"שרשרת";
-  state.price=basePrice()+Math.max(0,state.fabrics.length-1)*40+(+button.dataset.add||0);
+  state.price=basePrice()+(state.fabrics.length>=2?45:0)+(state.fabrics.length>=3?35:0)+(+button.dataset.add||0);
   $("#finalPrice").textContent=state.price;
   $("#summaryShape").textContent=state.shape;
   $("#summaryPattern").textContent=state.pattern==="single"?"בד ראשוני בלבד":state.pattern==="a"?"תבנית א׳":"תבנית ב׳";
@@ -254,7 +254,7 @@ document.addEventListener("click",event=>{
     const item=swatch.dataset.group+":"+swatch.dataset.name;
     if(swatch.classList.contains("selected"))state.fabrics.push(item);
     else state.fabrics=state.fabrics.filter(x=>x!==item);
-    state.price=basePrice()+Math.max(0,state.fabrics.length-1)*40;
+    state.price=basePrice()+(state.fabrics.length>=2?45:0)+(state.fabrics.length>=3?35:0);
     updatePrice();updateNote();renderLivePreview();return;
   }
 
