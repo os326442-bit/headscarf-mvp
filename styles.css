@@ -52,7 +52,7 @@ body.flow-started #landing{display:none!important}
 .pattern-visual.long-pattern:before{
   width:250px!important;height:100px!important;left:50%!important;top:50%!important;
   transform:translate(-50%,-50%)!important;clip-path:none!important;box-shadow:none!important;
-  background:#c7b08f;z-index:1
+  border-radius:0!important;background:#c7b08f;z-index:1
 }
 .pattern-visual.long-pattern.pattern-1:before{background:#a88d6a}
 .pattern-visual.long-pattern.pattern-2:before{background:linear-gradient(to bottom,#a88d6a 0 50%,#d7c4a2 50% 100%)}
