@@ -29,31 +29,6 @@ function _show(id){
 
 const backStack=[];
 
-function rememberAndShow_UNUSED(id){
-  const current=$(".screen.active")?.id;
-  if(current && current!==id) backStack.push(current);
-  show(id);
-}
-
-function oldGoBack_UNUSED(){
-  const previous=backStack.pop();
-  if(previous) show(previous,true);
-}
-
-function oldAddBackButtons_UNUSED(){
-  document.querySelectorAll(".screen").forEach(screen=>{
-    if(screen.id==="landing" || screen.querySelector(".back-button")) return;
-    const button=document.createElement("button");
-    button.type="button";
-    button.className="back-button";
-    button.textContent="← חזרה";
-    button.addEventListener("click",goBack);
-    screen.insertBefore(button,screen.firstChild);
-  });
-}
-
-const backStack=[];
-
 function show(id, fromBack=false){
   const current=$(".screen.active")?.id;
   if(!fromBack && current && current!==id) backStack.push(current);
@@ -200,7 +175,7 @@ function chooseFinish(button){
 
 document.addEventListener("click",event=>{
   const go=event.target.closest("[data-go]");
-  if(go){event.preventDefault();rememberAndShow(go.dataset.go);return;}
+  if(go){event.preventDefault();show(go.dataset.go);return;}
 
   const cover=event.target.closest("[data-cover]");
   if(cover){chooseCover(cover.dataset.cover);return;}
