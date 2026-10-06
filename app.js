@@ -1,7 +1,7 @@
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const state={cover:null,shape:"משולש קטן",pattern:"single",finish:"נקי",price:89,fabrics:[]};
 const forms={full:[["long","לונג"],["triangle","משולש"]],half:[["bandana","בנדנה"],["ribbon","סרט"],["bow","קשת"]],both:[["long","לונג"],["triangle","משולש"],["bandana","בנדנה"],["ribbon","סרט"],["bow","קשת"]]};
-function show(id){$(".screen").forEach(x=>x.classList.remove("active"));$("#"+id).classList.add("active");if(id!=="landing")$("#landing").classList.remove("active");updateProgress();scrollTo(0,0)}
+function show(id){$(".screen").forEach(x=>x.classList.remove("active"));$("#"+id).classList.add("active");updateProgress();scrollTo(0,0)}
 function updateProgress(){const ids=["landing","choose","forms","pattern","fabrics","finish","result","feedback"],cur=$$(".screen.active")[0]?.id||"landing",n=ids.indexOf(cur);$$(".progress i").forEach((x,i)=>x.classList.toggle("on",i<=Math.min(4,Math.max(0,n-1))))}
 function renderForms(){const box=$("#formGrid");box.innerHTML=forms[state.cover].map(([id,name])=>`<button class="form-card" data-shape="${name}"><div class="mini"></div><strong>${name}</strong><small>${name==="לונג"||name==="משולש"?"כיסוי מלא":"חצי כיסוי"}</small></button>`).join("");$$(".form-card").forEach(b=>b.onclick=()=>{state.shape=b.dataset.shape;show("pattern")})}
 $$("[data-go]").forEach(b=>b.onclick=()=>show(b.dataset.go));
