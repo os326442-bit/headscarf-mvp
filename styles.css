@@ -78,9 +78,11 @@ body.flow-started #landing{display:none!important}
 .hero-line-art path{vector-effect:non-scaling-stroke}
 
 
-/* Triangle full-cover pattern examples — matches long-pattern card language */
+/* Triangle full-cover pattern examples — actual triangular scarf shape */
 .pattern-visual.triangle-pattern{height:240px;background:#f1e9df;position:relative;overflow:hidden;margin-bottom:16px}
-.pattern-visual.triangle-pattern:before{content:"";position:absolute;width:170px;height:170px;left:50%;top:50%;transform:translate(-50%,-50%);box-sizing:border-box;z-index:1}
+.pattern-visual.triangle-pattern:before{content:"";position:absolute;width:250px;height:150px;left:50%;top:50%;transform:translate(-50%,-45%);clip-path:polygon(0 0,100% 0,50% 100%);box-sizing:border-box;z-index:1}
 .pattern-visual.triangle-pattern.pattern-1:before{background:#b99a95}
-.pattern-visual.triangle-pattern.pattern-2:before{background:#a88d6a;border:22px solid #d7c4a2}
-.pattern-visual.triangle-pattern.pattern-3:before{background:linear-gradient(135deg,#b99a95 0 49.6%,#f1e7d8 50.4% 100%);border:12px solid #87927a}
+.pattern-visual.triangle-pattern.pattern-2:before{background:linear-gradient(135deg,#d7c4a2 0 13%,#a88d6a 13% 87%,#d7c4a2 87% 100%)}
+.pattern-visual.triangle-pattern.pattern-2:after{content:"";position:absolute;width:218px;height:126px;left:50%;top:50%;transform:translate(-50%,-47%);clip-path:polygon(0 0,100% 0,50% 100%);background:#a88d6a;z-index:2}
+.pattern-visual.triangle-pattern.pattern-3:before{background:#87927a}
+.pattern-visual.triangle-pattern.pattern-3:after{content:"";position:absolute;width:230px;height:136px;left:50%;top:50%;transform:translate(-50%,-47%);clip-path:polygon(0 0,100% 0,50% 100%);background:linear-gradient(63deg,#b99a95 0 49.5%,#f1e7d8 50.5% 100%);z-index:2}
