@@ -11,6 +11,14 @@ const forms={
 
 const backStack=[];
 
+function restartDesign(){
+  state.cover=null;state.shape="משולש קטן";state.pattern="single";state.finish="נקי";state.price=89;state.fabrics=[];
+  backStack.length=0;
+  $(".swatch.selected").forEach(x=>x.classList.remove("selected"));
+  $(".rating button.active,.yesno button.active").forEach(x=>x.classList.remove("active"));
+  show("landing");
+}
+
 function show(id,fromBack=false){
   const target=$("#"+id);
   if(!target)return;
@@ -174,6 +182,9 @@ function chooseFinish(button){
 }
 
 document.addEventListener("click",event=>{
+  const restart=event.target.closest("[data-restart-design]");
+  if(restart){event.preventDefault();restartDesign();return;}
+
   const back=event.target.closest("[data-back]");
   if(back){event.preventDefault();goBack();return;}
 
