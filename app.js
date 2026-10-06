@@ -11,7 +11,7 @@ const forms={
 function show(id){
   const target=$("#"+id);
   if(!target)return;
-  $(".screen").forEach(screen=>{
+  $$(" .screen".trim()).forEach(screen=>{
     screen.classList.remove("active");
     screen.hidden=true;
   });
@@ -140,5 +140,5 @@ document.addEventListener("click",event=>{
 
 renderSwatches();
 updatePrice();
-$(".screen").forEach(screen=>{screen.hidden=!screen.classList.contains("active");});
+$$(".screen").forEach(screen=>{screen.hidden=!screen.classList.contains("active");});
 updateProgress();
