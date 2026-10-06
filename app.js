@@ -67,8 +67,8 @@ function renderSwatches(){
     if(!box)return;
     box.innerHTML=arr.map(([name,c])=>{
       let src="";
-      if(group==="print") src=textileSvgs[{botanical:"botanical",waves:"waves",floral:"floral",tropical:"tropical"}[c]];
-      else if(group==="lace") src=textileSvgs[{ "#ded3c0":"laceCream","#302d2b":"laceBlack","#c7a0a0":"lacePink","#aa9476":"laceNatural"}[c]];
+      if(group==="print") src=textileSvgs[c];
+      else if(group==="lace") src=textileSvgs[{ "#ded3c0":"laceCream","#302d2b":"laceBlack","#c7a0a0":"lacePink","#aa9476":"laceNatural"}[c];
       return group==="base"
         ? '<button type="button" class="swatch" title="'+name+'" data-group="'+group+'" data-name="'+name+'"><span style="display:block;width:100%;height:100%;border-radius:50%;background:'+c+'"></span></button>'
         : '<button type="button" class="swatch" title="'+name+'" data-group="'+group+'" data-name="'+name+'"><img src="'+src+'" alt="" style="display:block;width:100%;height:100%;border-radius:50%;object-fit:cover"></button>';
