@@ -188,9 +188,32 @@ function renderPatterns(){
 
 function choosePattern(value){
   state.pattern=value;
+  state.fabrics=[];
+  $(".swatch.selected").forEach(x=>x.classList.remove("selected"));
   state.price=basePrice();
   updatePrice();
+  renderLivePreview();
   show("fabrics");
+}
+
+function fabricVisual(item){
+  if(!item)return "";
+  const parts=item.split(":");
+  const group=parts[0], name=parts.slice(1).join(":");
+  if(group==="base"){const found=colors.base.find(x=>x[0]===name);return found?found[1]:"";}
+  const arr=group==="print"?colors.print:colors.lace;
+  const found=arr.find(x=>x[0]===name);
+  if(!found)return "";
+  const map={print_botanical:"botanical",print_waves:"waves",print_vintage:"floral",print_tropical:"tropical",print_softflowers:"softflowers",print_geo:"geo",print_leaves:"leaves",print_abstract:"abstract",lace_cream:"laceCream",lace_black:"laceBlack",lace_pink:"lacePink",lace_natural:"laceNatural"};
+  return textileSvgs[map[found[1]]]||"";
+}
+function previewSlots(){return state.pattern==="single"?1:state.pattern==="a"?2:3;}
+function renderLivePreview(){
+  const box=$("#livePreview");if(!box)return;
+  const count=previewSlots();
+  const cls=(state.shape==="משולש"||state.shape==="בנדנה")?"live-square":state.shape==="קשת"?"live-bow":state.shape==="סרט"?"live-ribbon":"live-long";
+  box.className="live-preview "+cls+" slots-"+count;
+  box.innerHTML=Array.from({length:count},(_,i)=>{const fill=fabricVisual(state.fabrics[i]);const style=fill?(fill.startsWith("#")?"background:"+fill:"background-image:url(\'"+fill+"\');background-size:cover;background-position:center"):"";return '<div class="live-part part-'+(i+1)+'" style="'+style+'"><span>'+(fill?"":"בד "+(i+1))+'</span></div>';}).join("");
 }
 
 function chooseFinish(button){
@@ -231,7 +254,7 @@ document.addEventListener("click",event=>{
     if(swatch.classList.contains("selected"))state.fabrics.push(item);
     else state.fabrics=state.fabrics.filter(x=>x!==item);
     state.price=basePrice()+Math.max(0,state.fabrics.length-1)*40;
-    updatePrice();updateNote();return;
+    updatePrice();updateNote();renderLivePreview();return;
   }
 
   const finish=event.target.closest(".finish-card");
