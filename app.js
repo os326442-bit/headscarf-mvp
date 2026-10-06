@@ -130,7 +130,7 @@ function chooseCover(value){
 
 function choosePattern(value){
   state.pattern=value;
-  state.price=value==="single"?89:114;
+  state.price=value==="single"?(state.fabrics.length && state.fabrics.some(x=>x.startsWith("print:"))?100:89):114;
   updatePrice();
   show("fabrics");
 }
@@ -139,7 +139,7 @@ function chooseFinish(button){
   state.finish=button.dataset.finish==="none"?"נקי":
     button.dataset.finish==="tiara"?"נזר בד":
     button.dataset.finish==="fringe"?"פרנזים":"שרשרת";
-  state.price=(state.pattern==="single"?89:114)+Math.max(0,state.fabrics.length-1)*25+(+button.dataset.add||0);
+  state.price=(state.pattern==="single"?(state.fabrics.some(x=>x.startsWith("print:"))?100:89):114)+Math.max(0,state.fabrics.length-1)*25+(+button.dataset.add||0);
   $("#finalPrice").textContent=state.price;
   $("#summaryShape").textContent=state.shape;
   $("#summaryPattern").textContent=state.pattern==="single"?"בד ראשוני בלבד":state.pattern==="a"?"תבנית א׳":"תבנית ב׳";
@@ -166,7 +166,7 @@ document.addEventListener("click",event=>{
     const item=swatch.dataset.group+":"+swatch.dataset.name;
     if(swatch.classList.contains("selected"))state.fabrics.push(item);
     else state.fabrics=state.fabrics.filter(x=>x!==item);
-    state.price=(state.pattern==="single"?89:114)+Math.max(0,state.fabrics.length-1)*25;
+    state.price=(state.pattern==="single"?(state.fabrics.some(x=>x.startsWith("print:"))?100:89):114)+Math.max(0,state.fabrics.length-1)*25;
     updatePrice();updateNote();return;
   }
 
