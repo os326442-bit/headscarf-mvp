@@ -46,8 +46,18 @@ function renderForms(){
 
 const colors={
   base:[["טבע","#8b7359"],["מרווה","#71806a"],["ים","#557889"],["תכלת","#8bb8c3"],["ורוד","#c48e93"],["שמנת","#e6dccb"],["שחור","#282624"],["אפור","#99958e"]],
-  print:[["חול פרחוני","botanical"],["ים מודפס","waves"],["וינטג׳","floral"],["טרופי","tropical"]],
-  lace:[["תחרה שמנת","#ded3c0"],["תחרה שחורה","#302d2b"],["תחרה ורודה","#c7a0a0"],["תחרה טבעית","#aa9476"]]
+  print:[
+    ["חול פרחוני","print_botanical"],
+    ["ים מודפס","print_waves"],
+    ["וינטג׳","print_vintage"],
+    ["טרופי","print_tropical"]
+  ],
+  lace:[
+    ["תחרה שמנת","lace_cream"],
+    ["תחרה שחורה","lace_black"],
+    ["תחרה ורודה","lace_pink"],
+    ["תחרה טבעית","lace_natural"]
+  ]
 };
 
 const textileSvgs={
@@ -62,16 +72,27 @@ const textileSvgs={
 };
 
 function renderSwatches(){
+  const printKeys={
+    print_botanical:"botanical",
+    print_waves:"waves",
+    print_vintage:"floral",
+    print_tropical:"tropical"
+  };
+  const laceKeys={
+    lace_cream:"laceCream",
+    lace_black:"laceBlack",
+    lace_pink:"lacePink",
+    lace_natural:"laceNatural"
+  };
   Object.entries(colors).forEach(([group,arr])=>{
     const box=$("#"+(group==="base"?"baseSwatches":group==="print"?"printSwatches":"laceSwatches"));
     if(!box)return;
-    box.innerHTML=arr.map(([name,c])=>{
-      let src="";
-      if(group==="print") src=textileSvgs[c];
-      else if(group==="lace") src=textileSvgs[{ "#ded3c0":"laceCream","#302d2b":"laceBlack","#c7a0a0":"lacePink","#aa9476":"laceNatural"}[c];
-      return group==="base"
-        ? '<button type="button" class="swatch" title="'+name+'" data-group="'+group+'" data-name="'+name+'"><span style="display:block;width:100%;height:100%;border-radius:50%;background:'+c+'"></span></button>'
-        : '<button type="button" class="swatch" title="'+name+'" data-group="'+group+'" data-name="'+name+'"><img src="'+src+'" alt="" style="display:block;width:100%;height:100%;border-radius:50%;object-fit:cover"></button>';
+    box.innerHTML=arr.map(([name,key])=>{
+      if(group==="base"){
+        return '<button type="button" class="swatch" title="'+name+'" data-group="'+group+'" data-name="'+name+'"><span style="display:block;width:100%;height:100%;border-radius:50%;background:'+key+'"></span></button>';
+      }
+      const src=group==="print" ? textileSvgs[printKeys[key]] : textileSvgs[laceKeys[key]];
+      return '<button type="button" class="swatch" title="'+name+'" data-group="'+group+'" data-name="'+name+'"><img src="'+src+'" alt="'+name+'" style="display:block!important;width:100%!important;height:100%!important;border-radius:50%;object-fit:cover;opacity:1!important"></button>';
     }).join("");
   });
 }
