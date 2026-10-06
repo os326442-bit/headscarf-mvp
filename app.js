@@ -165,6 +165,7 @@ function chooseCover(value){
 function renderPatterns(){
   const box=document.querySelector("#pattern .pattern-grid");
   if(!box)return;
+  box.classList.toggle("single-option",state.shape==="קשת");
   const isTriangle=state.shape==="משולש";
   const isBandana=state.shape==="בנדנה";
   if(isTriangle || isBandana){
