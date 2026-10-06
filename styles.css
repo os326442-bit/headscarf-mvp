@@ -90,3 +90,6 @@ body.flow-started #landing{display:none!important}
 .form-card .mini:after{transform:none;clip-path:none}
 .form-card .mini-long:after{width:125px;height:50px;background:#a88d6a}
 .form-card .mini-triangle:after{width:105px;height:105px;background:#b99a95}
+
+/* Bandana uses the same square divisions as triangle, at a smaller scale */
+.pattern-visual.triangle-pattern.bandana-pattern:before{width:135px!important;height:135px!important}
