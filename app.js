@@ -50,18 +50,15 @@ const colors={
   lace:[["תחרה שמנת","#ded3c0"],["תחרה שחורה","#302d2b"],["תחרה ורודה","#c7a0a0"],["תחרה טבעית","#aa9476"]]
 };
 
-const printSvgs={
-  botanical:'<svg viewBox="0 0 60 60" aria-hidden="true"><rect width="60" height="60" fill="#b99565"/><path d="M8 10c8 8 8 18 0 28M18 5c8 8 8 18 0 28M38 12c-7 8-7 18 0 28M48 6c-7 8-7 18 0 28" stroke="#65724f" stroke-width="3" fill="none"/><circle cx="12" cy="12" r="5" fill="#f4d8a9"/><circle cx="42" cy="42" r="5" fill="#9b4f4f"/></svg>',
-  waves:'<svg viewBox="0 0 60 60" aria-hidden="true"><rect width="60" height="60" fill="#477987"/><path d="M-5 12Q10 2 25 12T55 12T85 12M-5 27Q10 17 25 27T55 27T85 27M-5 42Q10 32 25 42T55 42T85 42M-5 57Q10 47 25 57T55 57T85 57" stroke="#d9ebe4" stroke-width="5" fill="none"/><circle cx="15" cy="19" r="3" fill="#f0c77c"/><circle cx="45" cy="49" r="3" fill="#f0c77c"/></svg>',
-  floral:'<svg viewBox="0 0 60 60" aria-hidden="true"><rect width="60" height="60" fill="#b86f72"/><g fill="#f7d5c0"><circle cx="13" cy="15" r="5"/><circle cx="22" cy="10" r="5"/><circle cx="17" cy="23" r="5"/></g><circle cx="17" cy="16" r="2" fill="#e39a70"/><g fill="#6f4d4b"><circle cx="44" cy="43" r="5"/><circle cx="53" cy="38" r="5"/><circle cx="48" cy="51" r="5"/></g><circle cx="48" cy="44" r="2" fill="#e39a70"/></svg>',
-  tropical:'<svg viewBox="0 0 60 60" aria-hidden="true"><rect width="60" height="60" fill="#718765"/><path d="M8 48Q22 25 34 7M19 52Q28 29 49 20M31 58Q39 38 57 35" stroke="#d9c58d" stroke-width="6" fill="none"/><ellipse cx="13" cy="28" rx="7" ry="4" fill="#ead49a" transform="rotate(-35 13 28)"/><ellipse cx="43" cy="14" rx="8" ry="4" fill="#ead49a" transform="rotate(-25 43 14)"/></svg>'
-};
-
-const laceSvgs={
-  cream:'<svg viewBox="0 0 60 60" aria-hidden="true"><rect width="60" height="60" fill="#ded3c0"/><path d="M0 0L60 60M60 0L0 60M30 0V60M0 30H60" stroke="#b9a992" stroke-width="2" opacity=".8"/><circle cx="15" cy="15" r="5" fill="#fff9ee"/><circle cx="45" cy="15" r="5" fill="#fff9ee"/><circle cx="15" cy="45" r="5" fill="#fff9ee"/><circle cx="45" cy="45" r="5" fill="#fff9ee"/></svg>',
-  black:'<svg viewBox="0 0 60 60" aria-hidden="true"><rect width="60" height="60" fill="#302d2b"/><path d="M0 0L60 60M60 0L0 60M30 0V60M0 30H60" stroke="#6f6256" stroke-width="2"/><circle cx="15" cy="15" r="5" fill="#eee5d8"/><circle cx="45" cy="15" r="5" fill="#eee5d8"/><circle cx="15" cy="45" r="5" fill="#eee5d8"/><circle cx="45" cy="45" r="5" fill="#eee5d8"/></svg>',
-  pink:'<svg viewBox="0 0 60 60" aria-hidden="true"><rect width="60" height="60" fill="#c7a0a0"/><path d="M0 0L60 60M60 0L0 60M30 0V60M0 30H60" stroke="#a77b7d" stroke-width="2"/><circle cx="15" cy="15" r="5" fill="#f9e8df"/><circle cx="45" cy="15" r="5" fill="#f9e8df"/><circle cx="15" cy="45" r="5" fill="#f9e8df"/><circle cx="45" cy="45" r="5" fill="#f9e8df"/></svg>',
-  natural:'<svg viewBox="0 0 60 60" aria-hidden="true"><rect width="60" height="60" fill="#aa9476"/><path d="M0 0L60 60M60 0L0 60M30 0V60M0 30H60" stroke="#806e5c" stroke-width="2"/><circle cx="15" cy="15" r="5" fill="#d9c9ae"/><circle cx="45" cy="15" r="5" fill="#d9c9ae"/><circle cx="15" cy="45" r="5" fill="#d9c9ae"/><circle cx="45" cy="45" r="5" fill="#d9c9ae"/></svg>'
+const textileSvgs={
+ botanical:'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#b99565"/><g fill="none" stroke="#65724f" stroke-width="4"><path d="M10 90Q25 55 45 15M35 100Q55 55 85 20M55 100Q70 65 98 45"/></g><g fill="#f4d8a9"><circle cx="18" cy="25" r="8"/><circle cx="72" cy="72" r="9"/><circle cx="42" cy="45" r="7"/></g><g fill="#9b4f4f"><circle cx="18" cy="25" r="3"/><circle cx="72" cy="72" r="3"/><circle cx="42" cy="45" r="3"/></g></svg>'),
+ waves:'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#477987"/><g fill="none" stroke="#d9ebe4" stroke-width="7"><path d="M-10 15Q15 0 40 15T90 15T140 15"/><path d="M-10 40Q15 25 40 40T90 40T140 40"/><path d="M-10 65Q15 50 40 65T90 65T140 65"/><path d="M-10 90Q15 75 40 90T90 90T140 90"/></g></svg>'),
+ floral:'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#b86f72"/><g fill="#f7d5c0"><circle cx="20" cy="25" r="10"/><circle cx="35" cy="18" r="10"/><circle cx="29" cy="35" r="10"/><circle cx="76" cy="72" r="11"/><circle cx="91" cy="65" r="10"/><circle cx="84" cy="82" r="10"/></g><g fill="#e39a70"><circle cx="28" cy="27" r="4"/><circle cx="84" cy="73" r="4"/></g></svg>'),
+ tropical:'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#718765"/><g fill="#ead49a"><ellipse cx="22" cy="25" rx="22" ry="8" transform="rotate(-35 22 25)"/><ellipse cx="72" cy="20" rx="24" ry="8" transform="rotate(-25 72 20)"/><ellipse cx="40" cy="72" rx="25" ry="8" transform="rotate(-45 40 72)"/></g><g stroke="#d9c58d" stroke-width="4"><path d="M5 95Q35 55 72 5M25 100Q50 60 98 38"/></g></svg>'),
+ laceCream:'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#ded3c0"/><g fill="none" stroke="#b9a992" stroke-width="2"><circle cx="25" cy="25" r="15"/><circle cx="75" cy="25" r="15"/><circle cx="25" cy="75" r="15"/><circle cx="75" cy="75" r="15"/><path d="M0 50H100M50 0V100"/></g></svg>'),
+ laceBlack:'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#302d2b"/><g fill="none" stroke="#9b8c7b" stroke-width="2"><circle cx="25" cy="25" r="15"/><circle cx="75" cy="25" r="15"/><circle cx="25" cy="75" r="15"/><circle cx="75" cy="75" r="15"/><path d="M0 50H100M50 0V100"/></g></svg>'),
+ lacePink:'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#c7a0a0"/><g fill="none" stroke="#a77b7d" stroke-width="2"><circle cx="25" cy="25" r="15"/><circle cx="75" cy="25" r="15"/><circle cx="25" cy="75" r="15"/><circle cx="75" cy="75" r="15"/><path d="M0 50H100M50 0V100"/></g></svg>'),
+ laceNatural:'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#aa9476"/><g fill="none" stroke="#806e5c" stroke-width="2"><circle cx="25" cy="25" r="15"/><circle cx="75" cy="25" r="15"/><circle cx="25" cy="75" r="15"/><circle cx="75" cy="75" r="15"/><path d="M0 50H100M50 0V100"/></g></svg>')
 };
 
 function renderSwatches(){
@@ -69,13 +66,12 @@ function renderSwatches(){
     const box=$("#"+(group==="base"?"baseSwatches":group==="print"?"printSwatches":"laceSwatches"));
     if(!box)return;
     box.innerHTML=arr.map(([name,c])=>{
-      let visual='';
-      if(group==="print") visual=printSvgs[c];
-      else if(group==="lace"){
-        const key=c==="#ded3c0"?"cream":c==="#302d2b"?"black":c==="#c7a0a0"?"pink":"natural";
-        visual=laceSvgs[key];
-      } else visual='<span style="display:block;width:100%;height:100%;border-radius:50%;background:'+c+'"></span>';
-      return '<button type="button" class="swatch" title="'+name+'" data-group="'+group+'" data-name="'+name+'">'+visual+'</button>';
+      let src="";
+      if(group==="print") src=textileSvgs[{botanical:"botanical",waves:"waves",floral:"floral",tropical:"tropical"}[c]];
+      else if(group==="lace") src=textileSvgs[{ "#ded3c0":"laceCream","#302d2b":"laceBlack","#c7a0a0":"lacePink","#aa9476":"laceNatural"}[c]];
+      return group==="base"
+        ? '<button type="button" class="swatch" title="'+name+'" data-group="'+group+'" data-name="'+name+'"><span style="display:block;width:100%;height:100%;border-radius:50%;background:'+c+'"></span></button>'
+        : '<button type="button" class="swatch" title="'+name+'" data-group="'+group+'" data-name="'+name+'"><img src="'+src+'" alt="" style="display:block;width:100%;height:100%;border-radius:50%;object-fit:cover"></button>';
     }).join("");
   });
 }
