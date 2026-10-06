@@ -16,7 +16,7 @@ function show(id, fromBack=false){
   if(!target)return;
   const current=$(".screen.active")?.id;
   if(!fromBack && current && current!==id)flowHistory.push(current);
-  $(" .screen".trim()).forEach(screen=>{
+  document.querySelectorAll(".screen").forEach(screen=>{
     screen.classList.remove("active");
     screen.hidden=true;
   });
@@ -40,7 +40,7 @@ function goBack(){
 }
 
 function addBackButtons(){
-  $(".screen").forEach(screen=>{
+  document.querySelectorAll(".screen").forEach(screen=>{
     if(screen.id==="landing" || screen.querySelector(".back-button"))return;
     const button=document.createElement("button");
     button.type="button";
