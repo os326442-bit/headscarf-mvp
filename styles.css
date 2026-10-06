@@ -30,3 +30,7 @@ body.flow-started #landing{display:none!important}
 /* Back navigation */
 .back-button{display:block;border:0;background:transparent;color:var(--muted);font:inherit;font-size:14px;padding:8px 0;margin:0 0 24px;cursor:pointer}
 .back-button:hover{color:var(--ink)}
+
+/* Redesign navigation */
+.restart-design{display:block;border:0;background:transparent;color:var(--muted);font:inherit;font-size:14px;padding:8px 0;margin:0 0 24px;cursor:pointer}
+.restart-design:hover{color:var(--ink)}
