@@ -71,3 +71,8 @@ body.flow-started #landing{display:none!important}
   content:"";position:absolute;width:2px;height:50px;left:50%;top:50%;
   transform:translateX(-50%);background:#f1e9df;z-index:2;
 }
+
+
+/* Delicate continuous-line woman illustration on the landing screen */
+.hero-line-art{width:min(360px,82vw);height:auto;color:#8d7663;display:block;opacity:.92}
+.hero-line-art path{vector-effect:non-scaling-stroke}
