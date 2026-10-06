@@ -51,10 +51,17 @@ const colors={
 };
 
 const printPatterns={
-  botanical:'radial-gradient(circle at 25% 25%,#9b4f4f 0 7%,transparent 8%),radial-gradient(circle at 70% 70%,#f1ddc0 0 8%,transparent 9%),linear-gradient(120deg,transparent 42%,#65724f 43% 47%,transparent 48%),linear-gradient(60deg,#c8a878 0 49%,#b99565 50% 100%)',
-  waves:'radial-gradient(circle at 22% 35%,#f0c77c 0 5%,transparent 6%),radial-gradient(circle at 76% 68%,#f0c77c 0 5%,transparent 6%),repeating-radial-gradient(ellipse at 50% 0%,transparent 0 12px,#d9ebe4 13px 18px),linear-gradient(135deg,#477987,#6b9aa2)',
-  floral:'radial-gradient(circle at 25% 30%,#f5d0bd 0 7%,transparent 8%),radial-gradient(circle at 32% 23%,#f5d0bd 0 7%,transparent 8%),radial-gradient(circle at 75% 70%,#72524f 0 8%,transparent 9%),linear-gradient(120deg,#e39a70 0 3%,transparent 4% 100%),#b86f72',
-  tropical:'radial-gradient(ellipse at 30% 35%,#d9c58d 0 9%,transparent 10%),radial-gradient(ellipse at 75% 65%,#d9c58d 0 10%,transparent 11%),linear-gradient(135deg,transparent 45%,#d9c58d 46% 50%,transparent 51%),#718765'
+  botanical:'radial-gradient(circle at 24% 24%,#f4d8a9 0 5%,transparent 6%),radial-gradient(circle at 30% 18%,#f4d8a9 0 5%,transparent 6%),radial-gradient(circle at 76% 70%,#9b4f4f 0 6%,transparent 7%),linear-gradient(115deg,transparent 43%,#65724f 44% 48%,transparent 49%),linear-gradient(60deg,#b99565 0 49%,#c8a878 50% 100%)',
+  waves:'repeating-radial-gradient(ellipse at 50% 0%,transparent 0 10px,#d9ebe4 11px 16px),linear-gradient(135deg,#477987 0 48%,#6b9aa2 49% 100%)',
+  floral:'radial-gradient(circle at 24% 30%,#f7d5c0 0 6%,transparent 7%),radial-gradient(circle at 31% 23%,#f7d5c0 0 6%,transparent 7%),radial-gradient(circle at 73% 68%,#6f4d4b 0 7%,transparent 8%),linear-gradient(120deg,#e39a70 0 4%,transparent 5% 100%),#b86f72',
+  tropical:'radial-gradient(ellipse at 27% 32%,#ead49a 0 8%,transparent 9%),radial-gradient(ellipse at 73% 68%,#ead49a 0 9%,transparent 10%),linear-gradient(135deg,transparent 43%,#d9c58d 44% 50%,transparent 51%),#718765'
+};
+
+const lacePatterns={
+  cream:'radial-gradient(circle,#fff9ee 0 2px,transparent 2.5px),radial-gradient(circle at 6px 6px,#b9a992 0 2px,transparent 2.5px),#ded3c0',
+  black:'radial-gradient(circle,#eee5d8 0 2px,transparent 2.5px),radial-gradient(circle at 6px 6px,#6f6256 0 2px,transparent 2.5px),#302d2b',
+  pink:'radial-gradient(circle,#f9e8df 0 2px,transparent 2.5px),radial-gradient(circle at 6px 6px,#a77b7d 0 2px,transparent 2.5px),#c7a0a0',
+  natural:'radial-gradient(circle,#d9c9ae 0 2px,transparent 2.5px),radial-gradient(circle at 6px 6px,#806e5c 0 2px,transparent 2.5px),#aa9476'
 };
 
 function renderSwatches(){
@@ -64,7 +71,9 @@ function renderSwatches(){
     box.innerHTML=arr.map(([name,c])=>{
       const style=group==="print"
         ? 'background-color:#ddd;background-image:'+printPatterns[c]+';background-size:70px 70px;'
-        : 'background:'+c;
+        : group==="lace"
+          ? 'background-color:'+c+';background-image:'+lacePatterns[c==='#ded3c0'?'cream':c==='#302d2b'?'black':c==='#c7a0a0'?'pink':'natural']+';background-size:12px 12px;'
+          : 'background:'+c;
       return '<button type="button" class="swatch" title="'+name+'" data-group="'+group+'" data-name="'+name+'" style="'+style+'"></button>';
     }).join("");
   });
