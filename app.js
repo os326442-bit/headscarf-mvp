@@ -1,7 +1,6 @@
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 
 const state={cover:null,shape:"משולש קטן",pattern:"single",finish:"נקי",price:89,fabrics:[]};
-const flowHistory=[];
 function basePrice(){const first=state.fabrics[0]||"";return first.startsWith("print:")||first.startsWith("lace:")?100:89;}
 
 const forms={
@@ -10,44 +9,24 @@ const forms={
   both:[["long","לונג"],["triangle","משולש"],["bandana","בנדנה"],["ribbon","סרט"],["bow","קשת"]]
 };
 
-function show(id, fromBack=false){
+function show(id){
   const target=$("#"+id);
   if(!target)return;
-  const current=$(".screen.active")?.id;
-  if(!fromBack && current && current!==id)flowHistory.push(current);
-  $(" .screen".trim()).forEach(screen=>{
+  $$(" .screen".trim()).forEach(screen=>{
     screen.classList.remove("active");
     screen.hidden=true;
   });
   target.hidden=false;
   target.classList.add("active");
-  const topbar=document.querySelector(".topbar");
   if(id!=="landing"){
     document.body.classList.add("flow-started");
-    if(topbar)topbar.style.display="none";
-  }else{
-    document.body.classList.remove("flow-started");
-    if(topbar)topbar.style.display="";
+    document.getElementById("landing")?.remove();
+    document.querySelector(".topbar")?.remove();
   }
   updateProgress();
   window.scrollTo({top:0,behavior:"smooth"});
 }
-function goBack(){
-  const previous=flowHistory.pop();
-  if(previous)show(previous,true);
-}
 
-function addBackButtons(){
-  $(".screen").forEach(screen=>{
-    if(screen.id==="landing" || screen.querySelector(".back-button"))return;
-    const button=document.createElement("button");
-    button.type="button";
-    button.className="back-button";
-    button.textContent="← חזרה";
-    button.addEventListener("click",goBack);
-    screen.insertBefore(button,screen.firstChild);
-  });
-}
 function updateProgress(){
   const ids=["landing","choose","forms","pattern","fabrics","finish","result","feedback"];
   const current=$(".screen.active")?.id||"landing";
@@ -168,8 +147,6 @@ function chooseFinish(button){
   $("#summaryFinish").textContent=state.finish;
   show("result");
 }
-
-addBackButtons();
 
 document.addEventListener("click",event=>{
   const go=event.target.closest("[data-go]");
