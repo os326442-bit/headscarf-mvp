@@ -9,7 +9,7 @@ const forms={
   both:[["long","לונג"],["triangle","משולש"],["bandana","בנדנה"],["ribbon","סרט"],["bow","קשת"]]
 };
 
-function show(id){
+function _show(id){
   const target=$("#"+id);
   if(!target)return;
   $$(" .screen".trim()).forEach(screen=>{
@@ -29,15 +29,40 @@ function show(id){
 
 const backStack=[];
 
-function rememberAndShow(id){
+function rememberAndShow_UNUSED(id){
   const current=$(".screen.active")?.id;
   if(current && current!==id) backStack.push(current);
   show(id);
 }
 
+function oldGoBack_UNUSED(){
+  const previous=backStack.pop();
+  if(previous) show(previous,true);
+}
+
+function oldAddBackButtons_UNUSED(){
+  document.querySelectorAll(".screen").forEach(screen=>{
+    if(screen.id==="landing" || screen.querySelector(".back-button")) return;
+    const button=document.createElement("button");
+    button.type="button";
+    button.className="back-button";
+    button.textContent="← חזרה";
+    button.addEventListener("click",goBack);
+    screen.insertBefore(button,screen.firstChild);
+  });
+}
+
+const backStack=[];
+
+function show(id, fromBack=false){
+  const current=$(".screen.active")?.id;
+  if(!fromBack && current && current!==id) backStack.push(current);
+  _show(id);
+}
+
 function goBack(){
   const previous=backStack.pop();
-  if(previous) show(previous);
+  if(previous) show(previous,true);
 }
 
 function addBackButtons(){
