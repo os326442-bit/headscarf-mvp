@@ -189,11 +189,10 @@ function renderPatterns(){
 function choosePattern(value){
   state.pattern=value;
   state.fabrics=[];
-  $(".swatch.selected").forEach(x=>x.classList.remove("selected"));
-  state.price=basePrice();
+  state.price=89;
+  show("fabrics");
   updatePrice();
   renderLivePreview();
-  show("fabrics");
 }
 
 function fabricVisual(item){
