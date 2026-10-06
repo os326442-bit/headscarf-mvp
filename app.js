@@ -224,6 +224,8 @@ function chooseFinish(button){
   $("#summaryShape").textContent=state.shape;
   $("#summaryPattern").textContent=state.pattern==="single"?"בד ראשוני בלבד":state.pattern==="a"?"תבנית א׳":"תבנית ב׳";
   $("#summaryFinish").textContent=state.finish;
+  const live=$("#livePreview"), final=$("#finalScarf");
+  if(live&&final){final.className=live.className;final.innerHTML=live.innerHTML;}
   show("result");
 }
 
