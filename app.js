@@ -174,6 +174,9 @@ function chooseFinish(button){
 }
 
 document.addEventListener("click",event=>{
+  const back=event.target.closest("[data-back]");
+  if(back){event.preventDefault();goBack();return;}
+
   const go=event.target.closest("[data-go]");
   if(go){event.preventDefault();show(go.dataset.go);return;}
 
@@ -211,7 +214,6 @@ document.addEventListener("click",event=>{
   if(event.target.closest("#thanks")){    event.preventDefault();    const rating=$(".rating button.active")?.textContent?.trim()||"לא נבחר";    const favorite=document.getElementById("feedbackFavorite")?.value?.trim()||"לא נכתב";    const improvement=document.getElementById("feedbackImprovement")?.value?.trim()||"לא נכתב";    const interest=$("#feedback .yesno button.active")?.textContent?.trim()||"לא נבחר";    const name=document.getElementById("feedbackName")?.value?.trim()||"לא נכתב";    const contact=document.getElementById("feedbackContact")?.value?.trim()||"לא נכתב";    const message=["משוב חדש — עיצוב אישי","","⭐ דירוג: "+rating+"/5","","מה הכי אהבת בתהליך?",favorite,"","הערות לשיפור השירות או החוויה:",improvement,"","האם היית רוצה לעצב מטפחת כזו באמת?",interest,"","שם:",name,"","טלפון / אימייל:",contact].join("\n");    window.location.href="https://wa.me/972506334993?text="+encodeURIComponent(message);    return;  }  if(event.target.closest("#restart"))location.reload();
 });
 
-addBackButtons();
 renderSwatches();
 updatePrice();
 $$(".screen").forEach(screen=>{screen.hidden=!screen.classList.contains("active");});
