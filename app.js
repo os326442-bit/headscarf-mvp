@@ -174,6 +174,10 @@ function renderPatterns(){
        <button class="pattern-card" data-pattern="b"><div class="pattern-visual triangle-pattern${sizeClass} pattern-3"></div><strong>תבנית 3 — שלושה בדים</strong><span>שני משולשים שווים ומסגרת חיצונית דקה מבד שלישי.</span></button>`;
     return;
   }
+  if(state.shape==="קשת"){
+    box.innerHTML=`<button class="pattern-card" data-pattern="single"><div class="pattern-visual bow-pattern"></div><strong>קשת חלקה</strong><span>בד אחד, ללא חלוקה.</span></button>`;
+    return;
+  }
   const isRibbon=state.shape==="סרט";
   const longSizeClass=isRibbon?" ribbon-pattern":"";
   box.innerHTML=`<button class="pattern-card" data-pattern="single"><div class="pattern-visual long-pattern${longSizeClass} pattern-1"></div><strong>תבנית 1 — מלבן פשוט</strong><span>מלבן אחד, בד אחד.</span></button>
