@@ -20,7 +20,7 @@
   <div class="hero-art"><div class="scarf-art hero-scarf"></div><div class="art-caption">אחת. בדיוק כמו שדמיינת.</div></div>
 </section>
 
-<section id="choose" class="screen"><button type="button" class="back-button" data-back>← חזרה</button>
+<section id="choose" class="screen"><button type="button" class="restart-design" data-restart-design>עיצוב חדש</button><button type="button" class="back-button" data-back>← חזרה</button>
   <div class="section-head"><h2>איזה כיסוי ראש תרצי ליצור?</h2></div>
   <div class="cover-grid">
     <button class="choice-card" data-cover="full"><div class="illustration full"></div><strong>כיסוי מלא</strong><span>לונג · משולש</span></button>
@@ -29,12 +29,12 @@
   </div>
 </section>
 
-<section id="forms" class="screen"><button type="button" class="back-button" data-back>← חזרה</button>
+<section id="forms" class="screen"><button type="button" class="restart-design" data-restart-design>עיצוב חדש</button><button type="button" class="back-button" data-back>← חזרה</button>
   <div class="section-head"><h2>בחרי את הצורה</h2></div>
   <div id="formGrid" class="form-grid"></div>
 </section>
 
-<section id="pattern" class="screen"><button type="button" class="back-button" data-back>← חזרה</button>
+<section id="pattern" class="screen"><button type="button" class="restart-design" data-restart-design>עיצוב חדש</button><button type="button" class="back-button" data-back>← חזרה</button>
   <div class="section-head"><h2>איך תרצי לחלק את הבדים?</h2></div>
   <div class="pattern-grid">
     <button class="pattern-card" data-pattern="single"><div class="pattern-visual single"></div><strong>בד ראשוני בלבד</strong><span>בד אחד. נקי ומדויק.</span></button>
@@ -43,7 +43,7 @@
   </div>
 </section>
 
-<section id="fabrics" class="screen builder"><button type="button" class="back-button" data-back>← חזרה</button>
+<section id="fabrics" class="screen builder"><button type="button" class="restart-design" data-restart-design>עיצוב חדש</button><button type="button" class="back-button" data-back>← חזרה</button>
   <div class="builder-head"><div><h2>בחרי את הבדים</h2></div><div class="price-box">₪<b id="price">89</b><small>מחיר נוכחי</small></div></div>
   <div class="palette">
     <div class="palette-group"><h3>בד בסיס</h3><div class="swatches" id="baseSwatches"></div></div>
@@ -54,7 +54,7 @@
   <div class="builder-actions"><button class="secondary" data-go="finish">סיימתי עם הבדים</button></div>
 </section>
 
-<section id="finish" class="screen"><button type="button" class="back-button" data-back>← חזרה</button>
+<section id="finish" class="screen"><button type="button" class="restart-design" data-restart-design>עיצוב חדש</button><button type="button" class="back-button" data-back>← חזרה</button>
   <div class="section-head"><h2>איך תרצי לסיים את המטפחת?</h2></div>
   <div class="finish-grid">
     <button class="finish-card" data-finish="none" data-add="0"><div class="finish-visual clean"></div><strong>נקי</strong><span>בלי תוספת</span></button>
@@ -64,7 +64,7 @@
   </div>
 </section>
 
-<section id="result" class="screen result"><button type="button" class="back-button" data-back>← חזרה</button>
+<section id="result" class="screen result"><button type="button" class="restart-design" data-restart-design>עיצוב חדש</button><button type="button" class="back-button" data-back>← חזרה</button>
   <div class="result-card">
     <p class="eyebrow">היצירה שלך</p>
     <div class="final-preview"><div id="finalScarf" class="scarf-art"></div></div>
@@ -75,7 +75,7 @@
   </div>
 </section>
 
-<section id="help" class="screen"><button type="button" class="back-button" data-back>← חזרה</button>
+<section id="help" class="screen"><button type="button" class="restart-design" data-restart-design>עיצוב חדש</button><button type="button" class="back-button" data-back>← חזרה</button>
   <div class="section-head"><h2>איזה סגנון את מחפשת?</h2></div>
   <div class="mood-grid">
     <button class="mood" data-mood="quiet">שקטה ועדינה</button><button class="mood" data-mood="festive">חגיגית</button>
@@ -84,7 +84,7 @@
   </div>
 </section>
 
-<section id="feedback" class="screen feedback"><button type="button" class="back-button" data-back>← חזרה</button>
+<section id="feedback" class="screen feedback"><button type="button" class="restart-design" data-restart-design>עיצוב חדש</button><button type="button" class="back-button" data-back>← חזרה</button>
   <div class="feedback-card"><p class="eyebrow">תודה</p><h2>יצרת משהו שהוא רק שלך.<br>עכשיו נשמח לדעת איך היה לך ליצור אותו.</h2>
   <div class="rating"><button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button></div>
   <label>מה הכי אהבת בתהליך?<textarea id="feedbackFavorite" placeholder="ספרי לנו בכמה מילים..."></textarea></label>
@@ -95,5 +95,5 @@
   <div class="feedback-whatsapp-note"><strong>המשוב שלך מגיע אליי ישירות בוואטסאפ.</strong><span>כל הערה שלך חשובה לי ועוזרת לי לשפר את השירות והחוויה לפני ההשקה.</span></div><button class="primary" id="thanks">שליחה לוואטסאפ</button><p class="tiny">תודה שעזרת לנו ליצור את הדבר הבא.</p></div>
 </section>
 </main>
-<script src="app.js?v=20261006-back8"></script>
+<script src="app.js?v=20261006-restart1"></script>
 </body></html>
