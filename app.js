@@ -59,7 +59,19 @@ function addNavigationButtons(){
       restart.type="button";
       restart.className="restart-design";
       restart.textContent="עצב מחדש";
-      restart.addEventListener("click",()=>window.location.reload());
+      restart.addEventListener("click",()=>{
+        backStack.length=0;
+        state.cover=null;
+        state.shape="משולש קטן";
+        state.pattern="single";
+        state.finish="נקי";
+        state.price=89;
+        state.fabrics=[];
+        document.querySelectorAll(".swatch.selected").forEach(x=>x.classList.remove("selected"));
+        const topbar=document.querySelector(".topbar");
+        if(topbar)topbar.style.display="";
+        show("landing");
+      });
       screen.insertBefore(restart,screen.firstChild.nextSibling);
     }
   });
