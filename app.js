@@ -50,7 +50,11 @@ const colors={
     ["חול פרחוני","print_botanical"],
     ["ים מודפס","print_waves"],
     ["וינטג׳","print_vintage"],
-    ["טרופי","print_tropical"]
+    ["טרופי","print_tropical"],
+    ["פרחים עדינים","print_softflowers"],
+    ["גאומטרי","print_geo"],
+    ["עלים","print_leaves"],
+    ["אבסטרקט","print_abstract"]
   ],
   lace:[
     ["תחרה שמנת","lace_cream"],
@@ -65,6 +69,10 @@ const textileSvgs={
  waves:'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#477987"/><g fill="none" stroke="#d9ebe4" stroke-width="7"><path d="M-10 15Q15 0 40 15T90 15T140 15"/><path d="M-10 40Q15 25 40 40T90 40T140 40"/><path d="M-10 65Q15 50 40 65T90 65T140 65"/><path d="M-10 90Q15 75 40 90T90 90T140 90"/></g></svg>'),
  floral:'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#b86f72"/><g fill="#f7d5c0"><circle cx="20" cy="25" r="10"/><circle cx="35" cy="18" r="10"/><circle cx="29" cy="35" r="10"/><circle cx="76" cy="72" r="11"/><circle cx="91" cy="65" r="10"/><circle cx="84" cy="82" r="10"/></g><g fill="#e39a70"><circle cx="28" cy="27" r="4"/><circle cx="84" cy="73" r="4"/></g></svg>'),
  tropical:'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#718765"/><g fill="#ead49a"><ellipse cx="22" cy="25" rx="22" ry="8" transform="rotate(-35 22 25)"/><ellipse cx="72" cy="20" rx="24" ry="8" transform="rotate(-25 72 20)"/><ellipse cx="40" cy="72" rx="25" ry="8" transform="rotate(-45 40 72)"/></g><g stroke="#d9c58d" stroke-width="4"><path d="M5 95Q35 55 72 5M25 100Q50 60 98 38"/></g></svg>'),
+  softflowers:'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#d5a9a2"/><g fill="#f7e4d2"><circle cx="20" cy="25" r="10"/><circle cx="32" cy="16" r="10"/><circle cx="30" cy="31" r="10"/><circle cx="78" cy="72" r="11"/><circle cx="91" cy="64" r="10"/><circle cx="87" cy="82" r="10"/></g><g fill="#9d6b62"><circle cx="28" cy="24" r="4"/><circle cx="85" cy="72" r="4"/></g></svg>'),
+  geo:'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#7d8f98"/><path d="M0 0L25 25L50 0L75 25L100 0M0 50L25 75L50 50L75 75L100 50M0 100L25 75L50 100L75 75L100 100" fill="none" stroke="#e7d7b8" stroke-width="8"/><circle cx="25" cy="25" r="5" fill="#b66f70"/><circle cx="75" cy="75" r="5" fill="#b66f70"/></svg>'),
+  leaves:'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#8a9670"/><g fill="#d8c48e"><ellipse cx="20" cy="25" rx="20" ry="7" transform="rotate(35 20 25)"/><ellipse cx="70" cy="20" rx="22" ry="7" transform="rotate(-35 70 20)"/><ellipse cx="45" cy="70" rx="24" ry="8" transform="rotate(25 45 70)"/></g><g stroke="#53624d" stroke-width="3"><path d="M0 90Q35 55 85 10M15 100Q45 65 100 50"/></g></svg>'),
+  abstract:'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#b97872"/><circle cx="25" cy="30" r="22" fill="#e5b27f"/><circle cx="75" cy="65" r="28" fill="#657d76"/><path d="M0 80Q30 55 55 80T110 70" fill="none" stroke="#f1dcc2" stroke-width="9"/><circle cx="70" cy="20" r="9" fill="#d8c58f"/></svg>'),
  laceCream:'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#ded3c0"/><g fill="none" stroke="#b9a992" stroke-width="2"><circle cx="25" cy="25" r="15"/><circle cx="75" cy="25" r="15"/><circle cx="25" cy="75" r="15"/><circle cx="75" cy="75" r="15"/><path d="M0 50H100M50 0V100"/></g></svg>'),
  laceBlack:'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#302d2b"/><g fill="none" stroke="#9b8c7b" stroke-width="2"><circle cx="25" cy="25" r="15"/><circle cx="75" cy="25" r="15"/><circle cx="25" cy="75" r="15"/><circle cx="75" cy="75" r="15"/><path d="M0 50H100M50 0V100"/></g></svg>'),
  lacePink:'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#c7a0a0"/><g fill="none" stroke="#a77b7d" stroke-width="2"><circle cx="25" cy="25" r="15"/><circle cx="75" cy="25" r="15"/><circle cx="25" cy="75" r="15"/><circle cx="75" cy="75" r="15"/><path d="M0 50H100M50 0V100"/></g></svg>'),
@@ -76,7 +84,11 @@ function renderSwatches(){
     print_botanical:"botanical",
     print_waves:"waves",
     print_vintage:"floral",
-    print_tropical:"tropical"
+    print_tropical:"tropical",
+    print_softflowers:"softflowers",
+    print_geo:"geo",
+    print_leaves:"leaves",
+    print_abstract:"abstract"
   };
   const laceKeys={
     lace_cream:"laceCream",
