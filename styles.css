@@ -20,3 +20,8 @@ body.flow-started #landing{display:none!important}
 .price-box{position:fixed;right:28px;bottom:28px;top:auto;left:auto;transform:none;z-index:1000;margin:0;padding:10px 16px;background:rgba(250,248,244,.96);border:1px solid var(--line);border-radius:999px;box-shadow:0 5px 18px rgba(0,0,0,.10);display:flex;align-items:center;gap:5px;direction:rtl;backdrop-filter:blur(8px)}
 .price-box b{font-size:27px;margin:0 2px}.price-box small{display:inline;color:var(--muted);font-size:10px;margin-right:3px}
 @media (max-width:700px){.price-box{right:16px;bottom:16px;left:auto;top:auto;transform:none;padding:9px 14px}.price-box b{font-size:24px}.price-box small{font-size:9px}}
+
+/* Center landing choices */
+#landing{display:flex!important;align-items:center;justify-content:center;text-align:center}
+#landing .hero-copy{display:flex;flex-direction:column;align-items:center;justify-content:center;max-width:760px;margin:0 auto}
+#landing .actions{justify-content:center}
