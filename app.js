@@ -11,7 +11,11 @@ const forms={
 function show(id){
   const target=$("#"+id);
   if(!target)return;
-  $$(".screen").forEach(screen=>screen.classList.remove("active"));
+  $(".screen").forEach(screen=>{
+    screen.classList.remove("active");
+    screen.hidden=true;
+  });
+  target.hidden=false;
   target.classList.add("active");
   if(id!=="landing"){
     document.body.classList.add("flow-started");
