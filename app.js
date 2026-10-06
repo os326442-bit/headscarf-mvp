@@ -27,6 +27,31 @@ function show(id){
   window.scrollTo({top:0,behavior:"smooth"});
 }
 
+const backStack=[];
+
+function rememberAndShow(id){
+  const current=$(".screen.active")?.id;
+  if(current && current!==id) backStack.push(current);
+  show(id);
+}
+
+function goBack(){
+  const previous=backStack.pop();
+  if(previous) show(previous);
+}
+
+function addBackButtons(){
+  document.querySelectorAll(".screen").forEach(screen=>{
+    if(screen.id==="landing" || screen.querySelector(".back-button")) return;
+    const button=document.createElement("button");
+    button.type="button";
+    button.className="back-button";
+    button.textContent="← חזרה";
+    button.addEventListener("click",goBack);
+    screen.insertBefore(button,screen.firstChild);
+  });
+}
+
 function updateProgress(){
   const ids=["landing","choose","forms","pattern","fabrics","finish","result","feedback"];
   const current=$(".screen.active")?.id||"landing";
@@ -150,7 +175,7 @@ function chooseFinish(button){
 
 document.addEventListener("click",event=>{
   const go=event.target.closest("[data-go]");
-  if(go){event.preventDefault();show(go.dataset.go);return;}
+  if(go){event.preventDefault();rememberAndShow(go.dataset.go);return;}
 
   const cover=event.target.closest("[data-cover]");
   if(cover){chooseCover(cover.dataset.cover);return;}
@@ -185,6 +210,8 @@ document.addEventListener("click",event=>{
 
   if(event.target.closest("#thanks")){    event.preventDefault();    const rating=$(".rating button.active")?.textContent?.trim()||"לא נבחר";    const favorite=document.getElementById("feedbackFavorite")?.value?.trim()||"לא נכתב";    const improvement=document.getElementById("feedbackImprovement")?.value?.trim()||"לא נכתב";    const interest=$("#feedback .yesno button.active")?.textContent?.trim()||"לא נבחר";    const name=document.getElementById("feedbackName")?.value?.trim()||"לא נכתב";    const contact=document.getElementById("feedbackContact")?.value?.trim()||"לא נכתב";    const message=["משוב חדש — עיצוב אישי","","⭐ דירוג: "+rating+"/5","","מה הכי אהבת בתהליך?",favorite,"","הערות לשיפור השירות או החוויה:",improvement,"","האם היית רוצה לעצב מטפחת כזו באמת?",interest,"","שם:",name,"","טלפון / אימייל:",contact].join("\n");    window.location.href="https://wa.me/972506334993?text="+encodeURIComponent(message);    return;  }  if(event.target.closest("#restart"))location.reload();
 });
+
+addBackButtons();
 
 renderSwatches();
 updatePrice();
