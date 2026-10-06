@@ -32,5 +32,5 @@ body.flow-started #landing{display:none!important}
 .back-button:hover{color:var(--ink)}
 
 /* Redesign navigation */
-.restart-design{display:block;border:0;background:transparent;color:var(--muted);font:inherit;font-size:14px;padding:8px 0;margin:0 0 24px;cursor:pointer}
-.restart-design:hover{color:var(--ink)}
+.restart-design{display:inline-flex!important;align-items:center;justify-content:center;border:1px solid var(--line);background:var(--paper);color:var(--ink);font:inherit;font-size:14px;font-weight:500;padding:8px 16px;margin:0 0 12px;border-radius:999px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.restart-design:hover{border-color:var(--accent);color:var(--accent)}
