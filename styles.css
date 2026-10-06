@@ -97,3 +97,8 @@ body.flow-started #landing{display:none!important}
 /* Ribbon uses the same divisions as long, at a smaller scale */
 .pattern-visual.long-pattern.ribbon-pattern:before{width:190px!important;height:76px!important}
 .pattern-visual.long-pattern.ribbon-pattern.pattern-3:after{height:38px!important}
+
+/* Bow: one small plain rectangular fabric */
+.pattern-visual.bow-pattern{height:240px;background:#f1e9df;position:relative;overflow:hidden;margin-bottom:16px}
+.pattern-visual.bow-pattern:before{content:"";position:absolute;width:150px!important;height:58px!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;clip-path:none!important;border-radius:0!important;box-shadow:none!important;background:#b99a95!important}
+.pattern-visual.bow-pattern:after{content:none!important}
