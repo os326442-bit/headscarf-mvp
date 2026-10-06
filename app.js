@@ -72,7 +72,7 @@ function renderForms(){
   if(!box)return;
   box.innerHTML=(forms[state.cover]||forms.both).map(([id,name])=>
     `<button type="button" class="form-card" data-shape="${name}">
-      <div class="mini"></div><strong>${name}</strong>
+      <div class="mini mini-${id}"></div><strong>${name}</strong>
       <small>${name==="לונג"||name==="משולש"?"כיסוי מלא":"חצי כיסוי"}</small>
     </button>`
   ).join("");
