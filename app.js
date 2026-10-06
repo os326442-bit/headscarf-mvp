@@ -9,46 +9,22 @@ const forms={
   both:[["long","לונג"],["triangle","משולש"],["bandana","בנדנה"],["ribbon","סרט"],["bow","קשת"]]
 };
 
-const flowHistory=[];
-
-function show(id, fromBack=false){
+function show(id){
   const target=$("#"+id);
   if(!target)return;
-  const current=$(".screen.active")?.id;
-  if(!fromBack && current && current!==id)flowHistory.push(current);
-  document.querySelectorAll(".screen").forEach(screen=>{
+  $$(" .screen".trim()).forEach(screen=>{
     screen.classList.remove("active");
     screen.hidden=true;
   });
   target.hidden=false;
   target.classList.add("active");
-  const topbar=document.querySelector(".topbar");
   if(id!=="landing"){
     document.body.classList.add("flow-started");
-    if(topbar)topbar.style.display="none";
-  }else{
-    document.body.classList.remove("flow-started");
-    if(topbar)topbar.style.display="";
+    document.getElementById("landing")?.remove();
+    document.querySelector(".topbar")?.remove();
   }
   updateProgress();
   window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function goBack(){
-  const previous=flowHistory.pop();
-  if(previous)show(previous,true);
-}
-
-function addBackButtons(){
-  document.querySelectorAll(".screen").forEach(screen=>{
-    if(screen.id==="landing" || screen.querySelector(".back-button"))return;
-    const button=document.createElement("button");
-    button.type="button";
-    button.className="back-button";
-    button.textContent="← חזרה";
-    button.addEventListener("click",goBack);
-    screen.insertBefore(button,screen.firstChild);
-  });
 }
 
 function updateProgress(){
@@ -209,8 +185,6 @@ document.addEventListener("click",event=>{
 
   if(event.target.closest("#thanks")){    event.preventDefault();    const rating=$(".rating button.active")?.textContent?.trim()||"לא נבחר";    const favorite=document.getElementById("feedbackFavorite")?.value?.trim()||"לא נכתב";    const improvement=document.getElementById("feedbackImprovement")?.value?.trim()||"לא נכתב";    const interest=$("#feedback .yesno button.active")?.textContent?.trim()||"לא נבחר";    const name=document.getElementById("feedbackName")?.value?.trim()||"לא נכתב";    const contact=document.getElementById("feedbackContact")?.value?.trim()||"לא נכתב";    const message=["משוב חדש — עיצוב אישי","","⭐ דירוג: "+rating+"/5","","מה הכי אהבת בתהליך?",favorite,"","הערות לשיפור השירות או החוויה:",improvement,"","האם היית רוצה לעצב מטפחת כזו באמת?",interest,"","שם:",name,"","טלפון / אימייל:",contact].join("\n");    window.location.href="https://wa.me/972506334993?text="+encodeURIComponent(message);    return;  }  if(event.target.closest("#restart"))location.reload();
 });
-
-addBackButtons();
 
 renderSwatches();
 updatePrice();
