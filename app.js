@@ -162,6 +162,19 @@ function chooseCover(value){
   show("forms");
 }
 
+function renderPatterns(){
+  const box=document.querySelector("#pattern .pattern-grid");
+  if(!box)return;
+  const isTriangle=state.shape==="משולש";
+  box.innerHTML=isTriangle
+    ? `<button class="pattern-card" data-pattern="single"><div class="pattern-visual triangle-pattern pattern-1"></div><strong>תבנית 1 — בד אחד</strong><span>ריבוע שלם מבד אחד.</span></button>
+       <button class="pattern-card" data-pattern="a"><div class="pattern-visual triangle-pattern pattern-2"></div><strong>תבנית 2 — שני בדים</strong><span>בד מרכזי עם מסגרת חיצונית מבד שני.</span></button>
+       <button class="pattern-card" data-pattern="b"><div class="pattern-visual triangle-pattern pattern-3"></div><strong>תבנית 3 — שלושה בדים</strong><span>שני משולשים שווים ומסגרת חיצונית דקה מבד שלישי.</span></button>`
+    : `<button class="pattern-card" data-pattern="single"><div class="pattern-visual long-pattern pattern-1"></div><strong>תבנית 1 — מלבן פשוט</strong><span>מלבן אחד, בד אחד.</span></button>
+       <button class="pattern-card" data-pattern="a"><div class="pattern-visual long-pattern pattern-2"></div><strong>תבנית 2 — חלוקה אופקית</strong><span>חלק עליון בד אחד, חלק תחתון בד שני.</span></button>
+       <button class="pattern-card" data-pattern="b"><div class="pattern-visual long-pattern pattern-3"></div><strong>תבנית 3 — חלוקה משולבת</strong><span>החלק העליון בד אחד, והתחתון מתחלק 50/50 לשני בדים.</span></button>`;
+}
+
 function choosePattern(value){
   state.pattern=value;
   state.price=basePrice();
@@ -195,7 +208,7 @@ document.addEventListener("click",event=>{
   if(cover){chooseCover(cover.dataset.cover);return;}
 
   const form=event.target.closest(".form-card");
-  if(form){state.shape=form.dataset.shape;show("pattern");return;}
+  if(form){state.shape=form.dataset.shape;renderPatterns();show("pattern");return;}
 
   const pattern=event.target.closest("[data-pattern]");
   if(pattern){choosePattern(pattern.dataset.pattern);return;}
