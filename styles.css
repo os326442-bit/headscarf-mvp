@@ -155,3 +155,7 @@ body.flow-started #landing{display:none!important}
 /* Full cover card: no legacy illustration geometry */
 #choose .choice-card[data-cover="full"]>.approved-full-cover{height:230px;margin-bottom:17px;display:flex!important;align-items:center!important;justify-content:center!important;background:transparent!important;overflow:visible!important}
 #choose .choice-card[data-cover="full"]>.approved-full-cover>svg{display:block!important;width:210px!important;height:218px!important;visibility:visible!important;opacity:1!important}
+
+/* Approved half-cover line illustration */
+#choose .approved-half-cover{height:230px;margin-bottom:17px;display:flex;align-items:center;justify-content:center;background:transparent;overflow:hidden}
+#choose .approved-half-cover img{display:block;width:auto;height:218px;max-width:94%;object-fit:contain}
