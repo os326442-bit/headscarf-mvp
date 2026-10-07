@@ -168,3 +168,6 @@ body.flow-started #landing{display:none!important}
 
 /* Full-cover sharp rendering */
 #choose .approved-full-cover>img{width:auto!important;height:218px!important;max-width:94%!important;object-fit:contain!important;image-rendering:auto!important;transform:none!important;filter:none!important;}
+
+/* Full-cover final sharp display */
+#choose .approved-full-cover>img{height:230px!important;width:246px!important;max-width:100%!important;object-fit:contain!important;image-rendering:auto!important;filter:none!important;transform:translateZ(0)!important;}
