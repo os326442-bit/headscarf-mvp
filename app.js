@@ -71,7 +71,7 @@ function renderForms(){
   const box=$("#formGrid");
   if(!box)return;
   const triangleArt='assets/triangle-scarf.svg?v=20261007-visible1';
-  const bowArt='assets/bow-headband-line.svg?v=20261007-bow1';
+  const bowArt='assets/bow-headband-exact.webp?v=20261007-bow-exact';
   box.innerHTML=(forms[state.cover]||forms.both).map(([id,name])=>
     `<button type="button" class="form-card" data-shape="${name}">
       <div class="mini mini-${id}">${id==="bow"?'<img class="shape-scarf-img bow-headband-img" src="'+bowArt+'" alt="">':(id==="triangle"||id==="bandana"?'<img class="shape-scarf-img" src="'+triangleArt+'" alt="">':"")}</div><strong>${name}</strong>
