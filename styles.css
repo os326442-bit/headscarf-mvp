@@ -159,3 +159,7 @@ body.flow-started #landing{display:none!important}
 /* Approved half-cover line illustration */
 #choose .approved-half-cover{height:230px;margin-bottom:17px;display:flex;align-items:center;justify-content:center;background:transparent;overflow:hidden}
 #choose .approved-half-cover img{display:block;width:auto;height:218px;max-width:94%;object-fit:contain}
+
+/* Approved full-cover turban line illustration */
+#choose .approved-full-cover{height:230px;margin-bottom:17px;display:flex!important;align-items:center!important;justify-content:center!important;background:transparent!important;overflow:hidden!important}
+#choose .approved-full-cover>img{display:block!important;width:auto!important;height:218px!important;max-width:94%!important;object-fit:contain!important;visibility:visible!important;opacity:1!important}
