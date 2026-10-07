@@ -175,5 +175,5 @@ body.flow-started #landing{display:none!important}
 /* Both option: approved illustrations back-to-back */
 #choose .approved-both-cover{height:230px;margin-bottom:17px;position:relative;display:flex;align-items:center;justify-content:center;background:transparent;overflow:hidden}
 #choose .approved-both-cover img{position:absolute;display:block;height:205px;width:auto;max-width:67%;object-fit:contain;filter:none}
-#choose .approved-both-cover .both-full{left:10px;z-index:2}
-#choose .approved-both-cover .both-half{right:10px;z-index:1;transform:scaleX(-1)}
+#choose .approved-both-cover .both-full{right:2px;z-index:2}
+#choose .approved-both-cover .both-half{left:2px;z-index:1;transform:scaleX(-1)}
