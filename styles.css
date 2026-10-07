@@ -186,3 +186,6 @@ body.flow-started #landing{display:none!important}
 /* Bow cleanup: remove the floating square/background from this card only */
 .form-card .mini.mini-bow{background:transparent!important;box-shadow:none!important;border:none!important;outline:none!important}
 .form-card .mini.mini-bow:before,.form-card .mini.mini-bow:after{content:none!important;display:none!important;background:none!important;box-shadow:none!important}
+
+/* Bow artwork: visually remove white pixels, keep black line art only */
+.form-card .mini.mini-bow .bow-headband-img{mix-blend-mode:multiply!important;background:transparent!important;}
