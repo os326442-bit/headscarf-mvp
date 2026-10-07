@@ -165,3 +165,6 @@ body.flow-started #landing{display:none!important}
 #choose .approved-full-cover>img{display:block!important;width:auto!important;height:218px!important;max-width:94%!important;object-fit:contain!important;visibility:visible!important;opacity:1!important}
 
 #choose .approved-full-cover>img{display:block!important;width:auto!important;height:218px!important;max-width:94%!important;object-fit:contain!important;visibility:visible!important;opacity:1!important}
+
+/* Full-cover sharp rendering */
+#choose .approved-full-cover>img{width:auto!important;height:218px!important;max-width:94%!important;object-fit:contain!important;image-rendering:auto!important;transform:none!important;filter:none!important;}
