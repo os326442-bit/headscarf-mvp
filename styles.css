@@ -177,3 +177,8 @@ body.flow-started #landing{display:none!important}
 #choose .approved-both-cover img{position:absolute;display:block;height:205px;width:auto;max-width:67%;object-fit:contain;filter:none}
 #choose .approved-both-cover .both-full{right:2px;z-index:2}
 #choose .approved-both-cover .both-half{left:2px;z-index:1;transform:scaleX(-1)}
+
+/* Bow: show only the approved transparent illustration, never the generic placeholder */
+.form-card .mini.mini-bow:after,.form-card .mini.mini-bow:before{content:none!important;display:none!important}
+.form-card .mini.mini-bow{background:#f1e9df!important;overflow:hidden!important}
+.form-card .mini.mini-bow .bow-headband-img{display:block!important;width:96%!important;height:96%!important;object-fit:contain!important;margin:auto!important;mix-blend-mode:normal!important;position:relative!important;z-index:2!important}
