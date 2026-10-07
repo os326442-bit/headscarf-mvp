@@ -123,3 +123,7 @@ body.flow-started #landing{display:none!important}
 
 /* Make the long scarf artwork merge into the card with no visible image background */
 .form-card .mini.mini-long{background-color:#f1e9df!important;background-blend-mode:multiply!important}
+
+/* Bandana shape card: open triangular scarf illustration, transparent background */
+.form-card .mini.mini-bandana{background:#f1e9df url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20240%20150%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%2351473f%22%20stroke-width%3D%222.2%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20fill%3D%22%23fffdfa%22%20d%3D%22M12%2028%20Q120%2062%20228%2028%20Q207%2063%20180%2091%20Q151%20120%20120%20143%20Q89%20120%2060%2091%20Q33%2063%2012%2028Z%22%2F%3E%3Cpath%20d%3D%22M12%2028%20Q120%2074%20228%2028%22%2F%3E%3Cpath%20d%3D%22M30%2038%20Q120%2083%20210%2038%22%2F%3E%3Cpath%20d%3D%22M51%2050%20Q120%2091%20189%2050%22%2F%3E%3Cpath%20d%3D%22M70%2062%20Q120%2099%20170%2062%22%2F%3E%3Cpath%20d%3D%22M88%2076%20Q120%20107%20152%2076%22%2F%3E%3Cpath%20d%3D%22M102%2091%20Q120%20116%20138%2091%22%2F%3E%3Cpath%20d%3D%22M19%2034%20Q32%2064%2061%2091%22%2F%3E%3Cpath%20d%3D%22M221%2034%20Q208%2064%20179%2091%22%2F%3E%3Cpath%20d%3D%22M61%2091%20Q88%20116%20120%20143%20Q152%20116%20179%2091%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") center/88% auto no-repeat!important}
+.form-card .mini.mini-bandana:after{content:none!important;display:none!important}
