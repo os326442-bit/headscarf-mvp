@@ -196,3 +196,6 @@ body.flow-started #landing{display:none!important}
 .form-card .mini.mini-bow .bow-headband-img{display:block!important;width:94%!important;height:94%!important;object-fit:contain!important;margin:auto!important;mix-blend-mode:multiply!important;background:transparent!important;filter:none!important}
 
 .form-card .mini.mini-ribbon:before,.form-card .mini.mini-ribbon:after{content:none!important;display:none!important}.form-card .mini.mini-ribbon{background-color:#f1e9df!important;background-image:url('assets/ribbon-line-approved.svg?v=20261007-ribbon2')!important;background-repeat:no-repeat!important;background-position:center!important;background-size:94% 94%!important}
+
+/* Ribbon final: exact approved artwork */
+.form-card .mini.mini-ribbon:before,.form-card .mini.mini-ribbon:after{content:none!important;display:none!important}.form-card .mini.mini-ribbon{background-color:#f1e9df!important;background-image:url('assets/ribbon-approved.webp?v=20261007-exact')!important;background-repeat:no-repeat!important;background-position:center!important;background-size:94% auto!important}
