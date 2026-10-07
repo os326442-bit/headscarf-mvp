@@ -132,3 +132,8 @@ body.flow-started #landing{display:none!important}
 /* Triangle and bandana artwork is rendered as an actual image element */
 .form-card .mini.mini-triangle:after,.form-card .mini.mini-bandana:after{content:none!important;display:none!important}
 .form-card .mini .shape-scarf-img{display:block;width:92%;height:92%;object-fit:contain;margin:auto;mix-blend-mode:multiply}
+
+/* Approved transparent triangular scarf art */
+.form-card .mini.mini-triangle:after,.form-card .mini.mini-bandana:after{content:none!important;display:none!important}
+.form-card .mini.mini-triangle,.form-card .mini.mini-bandana{background:#f1e9df!important}
+.form-card .mini .shape-scarf-img{display:block!important;width:94%!important;height:94%!important;object-fit:contain!important;margin:auto!important;mix-blend-mode:normal!important}
