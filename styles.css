@@ -199,3 +199,7 @@ body.flow-started #landing{display:none!important}
 
 /* Ribbon final: exact approved artwork */
 .form-card .mini.mini-ribbon:before,.form-card .mini.mini-ribbon:after{content:none!important;display:none!important}.form-card .mini.mini-ribbon{background-color:#f1e9df!important;background-image:url('assets/ribbon-approved.webp?v=20261007-exact')!important;background-repeat:no-repeat!important;background-position:center!important;background-size:94% auto!important}
+
+/* Ribbon visibility fix */
+.form-card .mini.mini-ribbon{min-height:170px!important;background:#f1e9df url("/headscarf-mvp/assets/ribbon-approved.webp?v=20261007-exact2") center/contain no-repeat!important}
+.form-card .mini.mini-ribbon:before,.form-card .mini.mini-ribbon:after{content:none!important;display:none!important}
