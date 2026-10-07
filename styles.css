@@ -189,3 +189,8 @@ body.flow-started #landing{display:none!important}
 
 /* Bow artwork: visually remove white pixels, keep black line art only */
 .form-card .mini.mini-bow .bow-headband-img{mix-blend-mode:multiply!important;background:transparent!important;}
+
+/* Bow final: same artwork panel background as bandana; line art blends into panel */
+.form-card .mini.mini-bow{background:#f1e9df!important;box-shadow:none!important;border:none!important;outline:none!important;overflow:hidden!important}
+.form-card .mini.mini-bow:before,.form-card .mini.mini-bow:after{content:none!important;display:none!important}
+.form-card .mini.mini-bow .bow-headband-img{display:block!important;width:94%!important;height:94%!important;object-fit:contain!important;margin:auto!important;mix-blend-mode:multiply!important;background:transparent!important;filter:none!important}
