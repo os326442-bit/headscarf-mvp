@@ -141,3 +141,8 @@ body.flow-started #landing{display:none!important}
 /* Full-cover approved head illustration */
 .illustration.full:after{content:none!important}
 .illustration.full img{display:block;width:auto;height:218px;max-width:92%;object-fit:contain;margin:auto}
+
+/* Ensure approved full-cover artwork is visible */
+#choose .choice-card[data-cover="full"] .illustration.full{background:transparent!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:visible!important}
+#choose .choice-card[data-cover="full"] .illustration.full:after{display:none!important;content:none!important}
+#choose .choice-card[data-cover="full"] .illustration.full img{display:block!important;visibility:visible!important;opacity:1!important;width:210px!important;height:218px!important;max-width:92%!important;object-fit:contain!important;position:relative!important;z-index:3!important}
