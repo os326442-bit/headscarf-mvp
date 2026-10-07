@@ -137,3 +137,7 @@ body.flow-started #landing{display:none!important}
 .form-card .mini.mini-triangle:after,.form-card .mini.mini-bandana:after{content:none!important;display:none!important}
 .form-card .mini.mini-triangle,.form-card .mini.mini-bandana{background:#f1e9df!important}
 .form-card .mini .shape-scarf-img{display:block!important;width:94%!important;height:94%!important;object-fit:contain!important;margin:auto!important;mix-blend-mode:normal!important}
+
+/* Full-cover approved head illustration */
+.illustration.full:after{content:none!important}
+.illustration.full img{display:block;width:auto;height:218px;max-width:92%;object-fit:contain;margin:auto}
