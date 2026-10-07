@@ -163,3 +163,5 @@ body.flow-started #landing{display:none!important}
 /* Approved full-cover turban line illustration */
 #choose .approved-full-cover{height:230px;margin-bottom:17px;display:flex!important;align-items:center!important;justify-content:center!important;background:transparent!important;overflow:hidden!important}
 #choose .approved-full-cover>img{display:block!important;width:auto!important;height:218px!important;max-width:94%!important;object-fit:contain!important;visibility:visible!important;opacity:1!important}
+
+#choose .approved-full-cover>img{display:block!important;width:auto!important;height:218px!important;max-width:94%!important;object-fit:contain!important;visibility:visible!important;opacity:1!important}
