@@ -203,3 +203,7 @@ body.flow-started #landing{display:none!important}
 /* Ribbon visibility fix */
 .form-card .mini.mini-ribbon{min-height:170px!important;background:#f1e9df url("/headscarf-mvp/assets/ribbon-approved.webp?v=20261007-exact2") center/contain no-repeat!important}
 .form-card .mini.mini-ribbon:before,.form-card .mini.mini-ribbon:after{content:none!important;display:none!important}
+
+/* Ribbon: transparent line-art image only */
+.form-card .mini.mini-ribbon{background:#f1e9df!important;background-image:none!important}
+.form-card .mini.mini-ribbon .ribbon-img{display:block!important;width:94%!important;height:94%!important;object-fit:contain!important;background:transparent!important}
