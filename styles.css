@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Heebo:wght@400;500;600;700&display=swap');
-:root{--ink:#665A58;--muted:#817773;--cream:#F8F5EF;--paper:#FFFCF8;--line:#E8DED8;--accent:#85766E;--gold:#AD8B89;--sage:#BDCEBB;--blush:#DCC2BE}
+:root{--ink:#665A58;--muted:#776B70;--cream:#F8F5EF;--paper:#FFFCF8;--line:#E8DED8;--accent:#906F83;--gold:#A77F91;--sage:#B9C8C1;--blush:#DCC2BE}
 *{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Heebo,Assistant,sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}
 .topbar{height:72px;padding:0 5vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:rgba(255,253,249,.88);backdrop-filter:blur(12px);position:sticky;top:0;z-index:10}.brand{font-size:23px;font-weight:600;letter-spacing:.03em}.brand span{color:var(--gold);margin:0 8px}.progress{display:flex;gap:7px}.progress i{display:block;width:34px;height:3px;background:#ddd4ca;border-radius:4px}.progress i.on{background:var(--accent)}.ghost{border:0;background:none;color:var(--muted)}
 .screen{display:none!important;min-height:100vh;padding:7vh 7vw}.screen.active{display:block!important}.screen:not(.active){visibility:hidden!important;height:0!important;min-height:0!important;padding:0!important;overflow:hidden!important}.hero{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:6vw;max-width:1400px;margin:auto}.eyebrow{font-size:12px;letter-spacing:.18em;color:var(--gold);font-weight:700;margin:0 0 18px}.hero h1{font-size:clamp(42px,5.3vw,78px);line-height:1.06;font-weight:500;margin:0;letter-spacing:-.04em}.hero h1 em{font-style:normal;color:var(--accent)}.lead{font-size:19px;color:var(--muted);max-width:580px;margin:28px 0}.actions{display:flex;gap:12px;flex-wrap:wrap}.primary,.secondary{padding:14px 24px;border-radius:4px;border:1px solid var(--accent);transition:.2s}.primary{background:var(--accent);color:white}.secondary{background:transparent;color:var(--accent)}.primary:hover,.secondary:hover{transform:translateY(-2px)}.hero-art{min-height:520px;display:grid;place-items:center;position:relative}.scarf-art{width:320px;height:430px;background:linear-gradient(145deg,#d8c8ad,#b89c76 55%,#75624e);clip-path:polygon(8% 6%,92% 0,76% 94%,45% 72%,19% 97%);box-shadow:20px 24px 55px #4c3d2d2e;transform:rotate(-5deg)}.hero-scarf:after{content:"";position:absolute;inset:16% 15%;border:1px solid #fff7;clip-path:inherit}.art-caption{position:absolute;bottom:7%;font-size:14px;color:var(--muted)}
@@ -210,22 +210,22 @@ body.flow-started #landing{display:none!important}
 
 
 /* Ziv Panayich — Soft Luxury palette, October 2026. Visual styling only. */
-body{background:#F8F5EF;color:#665A58}
+body{background:#F8F5EF;color:#906F83}
 .topbar{background:rgba(248,245,239,.94);border-bottom-color:#E8DED8}
-.brand{color:#665A58;letter-spacing:.055em}
-.brand span,.eyebrow{color:#AD8B89}
-.hero h1 em{color:#A77F84}
-.primary{background:#BDCEBB;border-color:#BDCEBB;color:#34473C;font-weight:600}
-.primary:hover{background:#ACBFAA;border-color:#ACBFAA;color:#2E4135}
-.secondary{border-color:#C9ADA8;color:#795F60;background:transparent}
+.brand{color:#906F83;letter-spacing:.055em}
+.brand span,.eyebrow{color:#906F83}
+.hero h1 em{color:#906F83}
+.primary{background:#B9C8C1;border-color:#B9C8C1;color:#3E504B;font-weight:600}
+.primary:hover{background:#AABDB5;border-color:#AABDB5;color:#354B44}
+.secondary{border-color:#C9ADA8;color:#906F83;background:transparent}
 .secondary:hover{background:#F2E4E1}
-.progress i{background:#E8DED8}.progress i.on{background:#A9BCA7}
+.progress i{background:#E8DED8}.progress i.on{background:#A4B9B0}
 .choice-card,.pattern-card,.finish-card,.mood,.form-card,.palette-group,.result-card,.feedback-card{background:#FFFCF8;border-color:#E8DED8;box-shadow:0 4px 22px rgba(88,70,65,.025)}
-.choice-card:hover,.pattern-card:hover,.finish-card:hover,.mood:hover,.choice-card.selected,.pattern-card.selected,.finish-card.selected,.form-card.selected,.mood.selected{border-color:#A5BBA5;box-shadow:0 12px 30px rgba(88,70,65,.075)}
+.choice-card:hover,.pattern-card:hover,.finish-card:hover,.mood:hover,.choice-card.selected,.pattern-card.selected,.finish-card.selected,.form-card.selected,.mood.selected{border-color:#A4B9B0;box-shadow:0 12px 30px rgba(88,70,65,.075)}
 .illustration,.form-card .mini,.pattern-visual,.finish-visual,.final-preview{background-color:#F2EAE4}
 .form-card .mini.mini-triangle,.form-card .mini.mini-bandana,.form-card .mini.mini-bow,.form-card .mini.mini-ribbon{background-color:#F2EAE4!important}
 .design-note,.feedback-whatsapp-note{background:#F0E7E1;border-color:#E8DED8}
 .price-box{background:rgba(255,252,248,.97);border-color:#DCC2BE;box-shadow:0 6px 25px rgba(88,70,65,.10)}
-.swatch.selected{box-shadow:0 0 0 2px #8DA78E}
-.rating button.active,.yesno button.active{background:#BDCEBB;color:#34473C;border-color:#A6BDA7}
-textarea:focus,input:focus,button:focus-visible{outline:2px solid #A6BDA7;outline-offset:2px}
+.swatch.selected{box-shadow:0 0 0 2px #8DA99D}
+.rating button.active,.yesno button.active{background:#B9C8C1;color:#3E504B;border-color:#9FB6AC}
+textarea:focus,input:focus,button:focus-visible{outline:2px solid #9FB6AC;outline-offset:2px}
