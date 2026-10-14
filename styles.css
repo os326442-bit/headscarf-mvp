@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Heebo:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Assistant:wght@400;500;600;700&family=Heebo:wght@400;500;600;700&display=swap');
 :root{--ink:#665A58;--muted:#776B70;--cream:#F8F5EF;--paper:#FFFCF8;--line:#E8DED8;--accent:#906F83;--gold:#A77F91;--sage:#B9C8C1;--blush:#DCC2BE}
 *{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Heebo,Assistant,sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}
 .topbar{height:72px;padding:0 5vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:rgba(255,253,249,.88);backdrop-filter:blur(12px);position:sticky;top:0;z-index:10}.brand{font-size:23px;font-weight:600;letter-spacing:.03em}.brand span{color:var(--gold);margin:0 8px}.progress{display:flex;gap:7px}.progress i{display:block;width:34px;height:3px;background:#ddd4ca;border-radius:4px}.progress i.on{background:var(--accent)}.ghost{border:0;background:none;color:var(--muted)}
@@ -247,3 +247,7 @@ textarea:focus,input:focus,button:focus-visible{outline:2px solid #9FB6AC;outlin
 
 /* Keep the landing English tagline centered on one line on every screen. */
 #landing .eyebrow{display:block;width:100%;text-align:center;white-space:nowrap;overflow-wrap:normal;word-break:normal;direction:ltr;font-size:clamp(10px,2.8vw,12px);letter-spacing:.16em}
+
+/* Brand display typography: Amatic SC for main page headings only. */
+#landing .hero-copy h1,.section-head h2,.screen h1,.screen h2{font-family:'Amatic SC',cursive!important;font-weight:700!important;letter-spacing:0!important;line-height:1.18!important;font-size:clamp(48px,8vw,86px)!important}
+@media(max-width:700px){#landing .hero-copy h1,.section-head h2,.screen h1,.screen h2{font-size:clamp(44px,11vw,64px)!important}}
