@@ -244,3 +244,6 @@ textarea:focus,input:focus,button:focus-visible{outline:2px solid #9FB6AC;outlin
   #landing .actions{max-width:100%;justify-content:center}
   #landing .actions button{max-width:100%}
 }
+
+/* Keep the landing English tagline centered on one line on every screen. */
+#landing .eyebrow{display:block;width:100%;text-align:center;white-space:nowrap;overflow-wrap:normal;word-break:normal;direction:ltr;font-size:clamp(10px,2.8vw,12px);letter-spacing:.16em}
