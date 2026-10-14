@@ -229,3 +229,18 @@ body{background:#F8F5EF;color:#906F83}
 .swatch.selected{box-shadow:0 0 0 2px #8DA99D}
 .rating button.active,.yesno button.active{background:#B9C8C1;color:#3E504B;border-color:#9FB6AC}
 textarea:focus,input:focus,button:focus-visible{outline:2px solid #9FB6AC;outline-offset:2px}
+
+
+/* Mobile landing layout: remove the unused second hero column and horizontal scroll. */
+#landing.screen.active{width:100%;max-width:100%;min-width:0;overflow-x:clip}
+#landing .hero-art{display:none!important}
+#landing .hero-copy{width:100%;max-width:760px;min-width:0}
+#landing .hero-copy h1,#landing .hero-copy .lead{max-width:100%;overflow-wrap:break-word}
+@media(max-width:700px){
+  html,body{max-width:100%;overflow-x:clip}
+  #landing.screen.active{padding:8vh 5vw;min-height:calc(100dvh - 72px)}
+  #landing .hero-copy h1{font-size:clamp(30px,8.4vw,42px);line-height:1.22}
+  #landing .hero-copy .lead{font-size:clamp(15px,4.1vw,19px);line-height:1.7}
+  #landing .actions{max-width:100%;justify-content:center}
+  #landing .actions button{max-width:100%}
+}
