@@ -62,6 +62,30 @@ function draw(){
    ctx.fillStyle=paintFor(fabrics[region],region);ctx.beginPath();ctx.moveTo(...p[0]);for(let k=1;k<4;k++)ctx.lineTo(...p[k]);ctx.closePath();ctx.fill();
    ctx.shadowBlur=0;ctx.shadowOffsetY=0;ctx.strokeStyle='rgba(255,255,255,.06)';ctx.lineWidth=.4;ctx.stroke();
  }
+ // Decorative finish is drawn above the fabric, without changing the chosen materials.
+ const finish=(typeof state!=='undefined'&&state.finish)||'נקי';
+ ctx.save();ctx.shadowBlur=0;ctx.shadowOffsetY=0;ctx.lineCap='round';
+ if(finish==='פרנזים'){
+   ctx.strokeStyle='#bda194';ctx.lineWidth=1.5;
+   for(let x=-wide+5;x<wide;x+=9){
+     const y=high+Math.sin((x/wide+1)*5+time)*8;
+     ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+Math.sin(time+x)*3,y+15);ctx.stroke();
+   }
+ }else if(finish==='שרשרת'){
+   ctx.strokeStyle='#c4a064';ctx.lineWidth=3;
+   ctx.beginPath();ctx.moveTo(-wide*.8,-high*.72);
+   ctx.quadraticCurveTo(0,-high*.2,wide*.8,-high*.72);ctx.stroke();
+   ctx.fillStyle='#c4a064';
+   for(let x=-wide*.7;x<=wide*.7;x+=14){
+     const y=-high*.72+(.7-Math.pow(x/(wide*.8),2)*.7)*high*.52;
+     ctx.beginPath();ctx.arc(x,y,2.4,0,Math.PI*2);ctx.fill();
+   }
+ }else if(finish==='נזר בד'){
+   ctx.strokeStyle='#e9d0c4';ctx.lineWidth=10;
+   ctx.beginPath();ctx.moveTo(-wide*.75,-high*.72);
+   ctx.quadraticCurveTo(0,-high*1.08,wide*.75,-high*.72);ctx.stroke();
+ }
+ ctx.restore();
  ctx.restore();
  }
  requestAnimationFrame(draw);
