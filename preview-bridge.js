@@ -21,6 +21,18 @@ function color(item,i){
  if(group==='lace')return name.includes('שחור')?'#46403e':name.includes('שמנת')?'#e5dac8':'#cca7a5';
  return ['#bc8d78','#718c82','#caa19b','#9a8795'][i%4];
 }
+const fabricImages=new Map();
+function paintFor(item,i){
+ if(!item||typeof fabricVisual!=='function')return color(item,i);
+ const src=fabricVisual(item);
+ if(!src||src.startsWith('#'))return color(item,i);
+ if(!fabricImages.has(src)){
+  const img=new Image();fabricImages.set(src,img);img.src=src;
+ }
+ const img=fabricImages.get(src);
+ if(!img.complete||!img.naturalWidth)return color(item,i);
+ return ctx.createPattern(img,'repeat')||color(item,i);
+}
 function draw(){
  const rect=canvas.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);
  const w=Math.round(rect.width*d),h=Math.round(rect.height*d);
@@ -42,7 +54,7 @@ function draw(){
    const p=[point(u,v),point(u2,v),point(u2,v2),point(u,v2)];
    const region=n===1?0:n===2?(triangle?(u>.16&&u<.84&&v>.16&&v<.84?0:1):(v<.5?0:1)):(triangle?(u<.13||u>.87||v<.13||v>.87?2:(u>v?0:1)):(v<.5?0:(u<.5?1:2)));
    const base=color(fabrics[region],region);
-   ctx.fillStyle=base;ctx.beginPath();ctx.moveTo(...p[0]);for(let k=1;k<4;k++)ctx.lineTo(...p[k]);ctx.closePath();ctx.fill();
+   ctx.fillStyle=paintFor(fabrics[region],region);ctx.beginPath();ctx.moveTo(...p[0]);for(let k=1;k<4;k++)ctx.lineTo(...p[k]);ctx.closePath();ctx.fill();
    ctx.shadowBlur=0;ctx.strokeStyle='rgba(255,255,255,.13)';ctx.lineWidth=.5;ctx.stroke();
  }
  ctx.restore();
