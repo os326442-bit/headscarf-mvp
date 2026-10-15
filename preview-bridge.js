@@ -56,8 +56,11 @@ function draw(timestamp=0){
  if(w&&h)ctx.clearRect(0,0,w,h);
  const active=result.classList.contains('active') && !document.hidden;
  if(active && !bow && w && h){
- if(!reduceMotion)time+=.018;const s=Math.min(w/600,h/350);ctx.save();ctx.translate(w/2,h/2);ctx.scale(s,s);
- ctx.rotate(Math.sin(time*.7)*.04);const shape=(typeof state!=='undefined'&&state.shape)||'משולש';
+ if(!reduceMotion)time+=.018;const s=Math.min(w/600,h/350);ctx.save();
+ // Gentle vertical floating (roughly 22px peak-to-peak) and visible rocking.
+ const bob=reduceMotion?0:Math.sin(time*1.45)*12;
+ ctx.translate(w/2,h/2+bob*s);ctx.scale(s,s);
+ ctx.rotate(reduceMotion?0:Math.sin(time*.85)*.085);const shape=(typeof state!=='undefined'&&state.shape)||'משולש';
  
  const triangle=['משולש','בנדנה'].includes(shape),n=(typeof state!=='undefined'&&state.pattern==='single')?1:(typeof state!=='undefined'&&state.pattern==='a')?2:3;
  const fabrics=(typeof state!=='undefined'&&state.fabrics)||[];
@@ -67,7 +70,7 @@ function draw(timestamp=0){
  for(let j=0;j<lines;j++)for(let i=0;i<steps;i++){
    const u=i/steps,v=j/lines,u2=(i+1)/steps,v2=(j+1)/lines;
    /* Fold square textile coordinates into a triangular drape while preserving fabric regions. */
-   function point(a,b){const x=(a-.5)*wide*2;const fold=triangle?Math.max(.02,1-Math.abs(2*a-1)):1;const y=(triangle?-high+b*2*high*fold:(b-.5)*high*2)+Math.sin(a*10+time+b*3)*13*fold+Math.cos(b*12-time*.8)*7*fold;const z=(Math.sin(a*8+time*.6)*22+Math.cos(b*7+time)*12)*fold;const spin=turn+time*.13;return [x*Math.cos(spin)+z*Math.sin(spin),y]}
+   function point(a,b){const x=(a-.5)*wide*2;const fold=triangle?Math.max(.02,1-Math.abs(2*a-1)):1;const y=(triangle?-high+b*2*high*fold:(b-.5)*high*2)+Math.sin(a*10+time+b*3)*13*fold+Math.cos(b*12-time*.8)*7*fold;const z=(Math.sin(a*8+time*.6)*22+Math.cos(b*7+time)*12)*fold;const spin=turn+(reduceMotion?0:Math.sin(time*.58)*.55);return [x*Math.cos(spin)+z*Math.sin(spin),y+Math.sin(spin)*x*.12]}
    const p=[point(u,v),point(u2,v),point(u2,v2),point(u,v2)];
    if(p.some(q=>!Number.isFinite(q[0])||!Number.isFinite(q[1])))continue;
    const region=n===1?0:n===2?(triangle?(u>.16&&u<.84&&v>.16&&v<.84?0:1):(v<.5?0:1)):(triangle?(u<.13||u>.87||v<.13||v>.87?2:(u>v?0:1)):(v<.5?0:(u<.5?1:2)));
