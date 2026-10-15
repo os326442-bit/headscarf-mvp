@@ -11,6 +11,7 @@ host.innerHTML='<canvas id="floatingPreviewCanvas" aria-label="הדמיית המ
 old.parentNode.insertBefore(host,old);
 old.style.display='none';
 const canvas=host.querySelector('canvas'),ctx=canvas.getContext('2d');
+if(!ctx){host.remove();old.style.display='';return;}
 let time=0,turn=0,drag=false,px=0;
 const palette={base:{'טבע':'#8b7359','מרווה':'#71806a','ים':'#557889','תכלת':'#8bb8c3','ורוד':'#c48e93','שמנת':'#e6dccb','שחור':'#282624','אפור':'#99958e'}};
 function color(item,i){
@@ -26,7 +27,7 @@ function draw(){
  if(w&&h&&(canvas.width!==w||canvas.height!==h)){canvas.width=w;canvas.height=h}
  ctx.clearRect(0,0,w,h);
  const active=result.classList.contains('active');
- if(active){
+ if(active && w && h){
  time+=.018;const s=Math.min(w/600,h/350);ctx.save();ctx.translate(w/2,h/2);ctx.scale(s,s);
  ctx.rotate(Math.sin(time*.7)*.04);const shape=(typeof state!=='undefined'&&state.shape)||'משולש';
  const triangle=['משולש','בנדנה'].includes(shape),n=(typeof state!=='undefined'&&state.pattern==='single')?1:(typeof state!=='undefined'&&state.pattern==='a')?2:3;
