@@ -36,7 +36,10 @@ function paintFor(item,i){
  }
  const img=fabricImages.get(src);
  if(!img.complete||!img.naturalWidth)return color(item,i);
- if(!fabricPatterns.has(src))fabricPatterns.set(src,ctx.createPattern(img,'repeat'));
+ if(!fabricPatterns.has(src)){
+  try{fabricPatterns.set(src,ctx.createPattern(img,'repeat'));}
+  catch(error){return color(item,i);}
+ }
  return fabricPatterns.get(src)||color(item,i);
 }
 function draw(timestamp=0){
