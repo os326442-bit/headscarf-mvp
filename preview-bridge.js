@@ -71,10 +71,13 @@ function draw(timestamp=0){
    const u=i/steps,v=j/lines,u2=(i+1)/steps,v2=(j+1)/lines;
    /* Fold square textile coordinates into a triangular drape while preserving fabric regions. */
    function point(a,b){const x=(a-.5)*wide*2;const fold=triangle?Math.max(.02,1-Math.abs(2*a-1)):1;const y=(triangle?-high+b*2*high*fold:(b-.5)*high*2)+Math.sin(a*10+time+b*3)*13*fold+Math.cos(b*12-time*.8)*7*fold;const z=(Math.sin(a*8+time*.6)*22+Math.cos(b*7+time)*12)*fold;const spin=turn+(reduceMotion?0:Math.sin(time*.58)*.55);
-   const pitch=tilt+(reduceMotion?0:Math.sin(time*.73)*.32);
+   const pitch=tilt+(reduceMotion?0:Math.sin(time*.73)*.72);
    const rotatedX=x*Math.cos(spin)+z*Math.sin(spin);
    const depth=-x*Math.sin(spin)+z*Math.cos(spin);
-   return [rotatedX,y*Math.cos(pitch)-depth*Math.sin(pitch)]}
+   const rotatedY=y*Math.cos(pitch)-depth*Math.sin(pitch);
+   const rotatedZ=y*Math.sin(pitch)+depth*Math.cos(pitch);
+   const perspective=650/(650+rotatedZ);
+   return [rotatedX*perspective,rotatedY*perspective]}
    const p=[point(u,v),point(u2,v),point(u2,v2),point(u,v2)];
    if(p.some(q=>!Number.isFinite(q[0])||!Number.isFinite(q[1])))continue;
    const region=n===1?0:n===2?(triangle?(u>.16&&u<.84&&v>.16&&v<.84?0:1):(v<.5?0:1)):(triangle?(u<.13||u>.87||v<.13||v>.87?2:(u>v?0:1)):(v<.5?0:(u<.5?1:2)));
@@ -111,8 +114,8 @@ function draw(timestamp=0){
  requestAnimationFrame(draw);
 }
 canvas.addEventListener('pointerdown',e=>{drag=true;px=e.clientX;py=e.clientY;canvas.setPointerCapture(e.pointerId)});
-canvas.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)){e.preventDefault();if(e.key==='ArrowLeft'||e.key==='ArrowRight')turn+=(e.key==='ArrowLeft'?-1:1)*.16;else tilt=Math.max(-.8,Math.min(.8,tilt+(e.key==='ArrowUp'?-1:1)*.12));}});
-canvas.addEventListener('pointermove',e=>{if(drag){turn+=(e.clientX-px)*.01;tilt=Math.max(-.8,Math.min(.8,tilt+(e.clientY-py)*.008));px=e.clientX;py=e.clientY}});
+canvas.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)){e.preventDefault();if(e.key==='ArrowLeft'||e.key==='ArrowRight')turn+=(e.key==='ArrowLeft'?-1:1)*.16;else tilt=Math.max(-1.15,Math.min(1.15,tilt+(e.key==='ArrowUp'?-1:1)*.18));}});
+canvas.addEventListener('pointermove',e=>{if(drag){turn+=(e.clientX-px)*.01;tilt=Math.max(-1.15,Math.min(1.15,tilt+(e.clientY-py)*.012));px=e.clientX;py=e.clientY}});
 canvas.addEventListener('pointerup',()=>drag=false);
 canvas.addEventListener('pointercancel',()=>drag=false);
 canvas.addEventListener('lostpointercapture',()=>drag=false);
