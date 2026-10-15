@@ -27,7 +27,6 @@ function color(item,i){
 }
 const fabricImages=new Map();
 const fabricPatterns=new Map();
-let textureWarningShown=false;
 function paintFor(item,i){
  if(!item||typeof fabricVisual!=='function')return color(item,i);
  const src=fabricVisual(item);
