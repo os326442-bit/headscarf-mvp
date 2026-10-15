@@ -11,6 +11,9 @@ host.innerHTML='<canvas id="floatingPreviewCanvas" aria-label="הדמיית המ
 old.parentNode.insertBefore(host,old);
 old.style.display='none';
 const canvas=host.querySelector('canvas'),ctx=canvas.getContext('2d');
+canvas.setAttribute('role','img');
+canvas.setAttribute('tabindex','0');
+canvas.setAttribute('aria-description','ניתן לסובב את ההדמיה באמצעות מקשי החצים או גרירה');
 if(!ctx){host.remove();old.style.display='';return;}
 let time=0,turn=0,drag=false,px=0,lastFrame=0;
 const reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -97,6 +100,7 @@ function draw(timestamp=0){
  requestAnimationFrame(draw);
 }
 canvas.addEventListener('pointerdown',e=>{drag=true;px=e.clientX;canvas.setPointerCapture(e.pointerId)});
+canvas.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();turn+=(e.key==='ArrowLeft'?-1:1)*.16;}});
 canvas.addEventListener('pointermove',e=>{if(drag){turn+=(e.clientX-px)*.01;px=e.clientX}});
 canvas.addEventListener('pointerup',()=>drag=false);
 canvas.addEventListener('pointercancel',()=>drag=false);
