@@ -27,6 +27,7 @@ function color(item,i){
 }
 const fabricImages=new Map();
 const fabricPatterns=new Map();
+let textureWarningShown=false;
 function paintFor(item,i){
  if(!item||typeof fabricVisual!=='function')return color(item,i);
  const src=fabricVisual(item);
@@ -66,6 +67,7 @@ function draw(timestamp=0){
    /* Fold square textile coordinates into a triangular drape while preserving fabric regions. */
    function point(a,b){const x=(a-.5)*wide*2;const fold=triangle?Math.max(.02,1-Math.abs(2*a-1)):1;const y=(triangle?-high+b*2*high*fold:(b-.5)*high*2)+Math.sin(a*10+time+b*3)*13*fold+Math.cos(b*12-time*.8)*7*fold;const z=(Math.sin(a*8+time*.6)*22+Math.cos(b*7+time)*12)*fold;const spin=turn+time*.13;return [x*Math.cos(spin)+z*Math.sin(spin),y]}
    const p=[point(u,v),point(u2,v),point(u2,v2),point(u,v2)];
+   if(p.some(q=>!Number.isFinite(q[0])||!Number.isFinite(q[1])))continue;
    const region=n===1?0:n===2?(triangle?(u>.16&&u<.84&&v>.16&&v<.84?0:1):(v<.5?0:1)):(triangle?(u<.13||u>.87||v<.13||v>.87?2:(u>v?0:1)):(v<.5?0:(u<.5?1:2)));
    ctx.fillStyle=paintFor(fabrics[region],region);ctx.beginPath();ctx.moveTo(...p[0]);for(let k=1;k<4;k++)ctx.lineTo(...p[k]);ctx.closePath();ctx.fill();
    ctx.shadowBlur=0;ctx.shadowOffsetY=0;ctx.strokeStyle='rgba(255,255,255,.06)';ctx.lineWidth=.4;ctx.stroke();
