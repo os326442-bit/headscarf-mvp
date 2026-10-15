@@ -10,6 +10,26 @@ host.style.cssText='max-width:720px;margin:0 auto 16px;position:relative';
 host.innerHTML='<canvas id="floatingPreviewCanvas" aria-label="הדמיית המטפחת המרחפת" style="display:block;width:100%;height:350px;border-radius:24px;background:radial-gradient(ellipse,#fffdfb,#f3e3df);touch-action:none"></canvas><p style="text-align:center;font-size:12px;color:#937b75">גרסת בדיקה: הדמיית תנועה לפי הבדים שנבחרו</p>';
 old.parentNode.insertBefore(host,old);
 old.style.display='none';
+let unfolded=false;
+const viewToggle=document.createElement('div');
+viewToggle.style.cssText='display:none;justify-content:center;gap:8px;margin:0 auto 12px;direction:rtl';
+viewToggle.setAttribute('role','group');
+viewToggle.setAttribute('aria-label','אופן הצגת המטפחת');
+const foldedButton=document.createElement('button');
+const squareButton=document.createElement('button');
+for(const [button,label,value] of [[foldedButton,'משולש',false],[squareButton,'ריבוע',true]]){
+ button.type='button';button.textContent=label;
+ button.style.cssText='padding:9px 22px;border-radius:24px;border:1px solid #b88e86;background:#fffaf7;color:#6b504c;cursor:pointer;font:inherit';
+ button.addEventListener('click',()=>{unfolded=value;syncViewButtons();});
+ viewToggle.appendChild(button);
+}
+function syncViewButtons(){for(const [button,selected] of [[foldedButton,!unfolded],[squareButton,unfolded]]){
+ button.setAttribute('aria-pressed',String(selected));
+ button.style.background=selected?'#e9cbc5':'#fffaf7';
+ button.style.borderColor=selected?'#956d66':'#b88e86';
+}}
+syncViewButtons();
+old.parentNode.insertBefore(viewToggle,host);
 const canvas=host.querySelector('canvas'),ctx=canvas.getContext('2d');
 canvas.setAttribute('role','img');
 canvas.setAttribute('tabindex','0');
@@ -46,6 +66,8 @@ function draw(timestamp=0){
  if(timestamp && timestamp-lastFrame<32){requestAnimationFrame(draw);return;}
  lastFrame=timestamp;
  const bow=result.classList.contains('active') && typeof state!=='undefined' && state.shape==='קשת';
+ const canUnfold=typeof state!=='undefined' && ['משולש','בנדנה'].includes(state.shape);
+ viewToggle.style.display=canUnfold?'flex':'none';
  host.style.display=bow?'none':'';old.style.display=bow?'':'none';
  const rect=canvas.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2);
  const w=Math.round(rect.width*d),h=Math.round(rect.height*d);
@@ -62,9 +84,10 @@ function draw(timestamp=0){
  ctx.translate(w/2,h/2+bob*s);ctx.scale(s,s);
  ctx.rotate(reduceMotion?0:Math.sin(time*.85)*.085);const shape=(typeof state!=='undefined'&&state.shape)||'משולש';
  
- const triangle=['משולש','בנדנה'].includes(shape),n=(typeof state!=='undefined'&&state.pattern==='single')?1:(typeof state!=='undefined'&&state.pattern==='a')?2:3;
+ const triangle=['משולש','בנדנה'].includes(shape) && !unfolded,n=(typeof state!=='undefined'&&state.pattern==='single')?1:(typeof state!=='undefined'&&state.pattern==='a')?2:3;
  const fabrics=(typeof state!=='undefined'&&state.fabrics)||[];
- const wide=shape==='בנדנה'?112:triangle?155:215,high=shape==='בנדנה'?115:triangle?160:(shape==='סרט'?45:95);
+ const squareShape=canUnfold && unfolded;
+ const wide=shape==='בנדנה'?112:canUnfold?155:215,high=squareShape?(shape==='בנדנה'?112:155):shape==='בנדנה'?115:triangle?160:(shape==='סרט'?45:95);
  ctx.shadowColor='#805f5960';ctx.shadowBlur=8;ctx.shadowOffsetY=3;
  const steps=48,lines=30;
  for(let j=0;j<lines;j++)for(let i=0;i<steps;i++){
