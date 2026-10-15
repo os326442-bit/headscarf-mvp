@@ -52,7 +52,7 @@ function draw(timestamp=0){
  
  const triangle=['משולש','בנדנה'].includes(shape),n=(typeof state!=='undefined'&&state.pattern==='single')?1:(typeof state!=='undefined'&&state.pattern==='a')?2:3;
  const fabrics=(typeof state!=='undefined'&&state.fabrics)||[];
- const wide=triangle?155:215,high=triangle?160:(shape==='סרט'?45:95);
+ const wide=shape==='בנדנה'?112:triangle?155:215,high=shape==='בנדנה'?115:triangle?160:(shape==='סרט'?45:95);
  ctx.shadowColor='#805f5960';ctx.shadowBlur=8;ctx.shadowOffsetY=3;
  const steps=48,lines=30;
  for(let j=0;j<lines;j++)for(let i=0;i<steps;i++){
