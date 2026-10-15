@@ -32,8 +32,8 @@ function draw(){
  const triangle=['משולש','בנדנה'].includes(shape),n=(typeof state!=='undefined'&&state.pattern==='single')?1:(typeof state!=='undefined'&&state.pattern==='a')?2:3;
  const fabrics=(typeof state!=='undefined'&&state.fabrics)||[];
  const wide=triangle?155:215,high=triangle?160:(shape==='סרט'?45:95);
- ctx.shadowColor='#805f5960';ctx.shadowBlur=23;ctx.shadowOffsetY=15;
- const steps=42,lines=25;
+ ctx.shadowColor='#805f5960';ctx.shadowBlur=8;ctx.shadowOffsetY=3;
+ const steps=64,lines=38;
  for(let j=0;j<lines;j++)for(let i=0;i<steps;i++){
    const u=i/steps,v=j/lines,u2=(i+1)/steps,v2=(j+1)/lines;
    /* Show unfolded square for triangle designs, as in the pattern selector. */
