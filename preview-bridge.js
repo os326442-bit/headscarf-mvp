@@ -24,6 +24,7 @@ function color(item,i){
 }
 const fabricImages=new Map();
 const fabricPatterns=new Map();
+let cachedCanvasWidth=0,cachedCanvasHeight=0;
 function paintFor(item,i){
  if(!item||typeof fabricVisual!=='function')return color(item,i);
  const src=fabricVisual(item);
@@ -43,7 +44,11 @@ function draw(timestamp=0){
  host.style.display=bow?'none':'';old.style.display=bow?'':'none';
  const rect=canvas.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2);
  const w=Math.round(rect.width*d),h=Math.round(rect.height*d);
- if(w&&h&&(canvas.width!==w||canvas.height!==h)){canvas.width=w;canvas.height=h}
+ if(w&&h&&(canvas.width!==w||canvas.height!==h)){
+  canvas.width=w;canvas.height=h;
+  cachedCanvasWidth=w;cachedCanvasHeight=h;
+  fabricPatterns.clear();
+}
  if(w&&h)ctx.clearRect(0,0,w,h);
  const active=result.classList.contains('active') && !document.hidden;
  if(active && !bow && w && h){
