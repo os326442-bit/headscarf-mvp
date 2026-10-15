@@ -39,12 +39,12 @@ function paintFor(item,i){
 function draw(){
  const bow=result.classList.contains('active') && typeof state!=='undefined' && state.shape==='קשת';
  host.style.display=bow?'none':'';old.style.display=bow?'':'none';
- const rect=canvas.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);
+ const rect=canvas.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2);
  const w=Math.round(rect.width*d),h=Math.round(rect.height*d);
  if(w&&h&&(canvas.width!==w||canvas.height!==h)){canvas.width=w;canvas.height=h}
- ctx.clearRect(0,0,w,h);
+ if(w&&h)ctx.clearRect(0,0,w,h);
  const active=result.classList.contains('active') && !document.hidden;
- if(active && w && h){
+ if(active && !bow && w && h){
  if(!reduceMotion)time+=.018;const s=Math.min(w/600,h/350);ctx.save();ctx.translate(w/2,h/2);ctx.scale(s,s);
  ctx.rotate(Math.sin(time*.7)*.04);const shape=(typeof state!=='undefined'&&state.shape)||'משולש';
  
@@ -60,7 +60,7 @@ function draw(){
    const p=[point(u,v),point(u2,v),point(u2,v2),point(u,v2)];
    const region=n===1?0:n===2?(triangle?(u>.16&&u<.84&&v>.16&&v<.84?0:1):(v<.5?0:1)):(triangle?(u<.13||u>.87||v<.13||v>.87?2:(u>v?0:1)):(v<.5?0:(u<.5?1:2)));
    ctx.fillStyle=paintFor(fabrics[region],region);ctx.beginPath();ctx.moveTo(...p[0]);for(let k=1;k<4;k++)ctx.lineTo(...p[k]);ctx.closePath();ctx.fill();
-   ctx.shadowBlur=0;ctx.strokeStyle='rgba(255,255,255,.06)';ctx.lineWidth=.4;ctx.stroke();
+   ctx.shadowBlur=0;ctx.shadowOffsetY=0;ctx.strokeStyle='rgba(255,255,255,.06)';ctx.lineWidth=.4;ctx.stroke();
  }
  ctx.restore();
  }
