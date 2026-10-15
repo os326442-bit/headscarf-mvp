@@ -92,7 +92,7 @@ function draw(timestamp=0){
  const squareShape=canUnfold && unfolded;
  const wide=shape==='בנדנה'?112:canUnfold?155:215,high=squareShape?(shape==='בנדנה'?112:155):shape==='בנדנה'?115:triangle?160:(shape==='סרט'?45:95);
  ctx.shadowColor='#805f5960';ctx.shadowBlur=8;ctx.shadowOffsetY=3;
- const steps=48,lines=30;
+ const steps=80,lines=80;
  for(let j=0;j<lines;j++)for(let i=0;i<steps;i++){
    const u=i/steps,v=j/lines,u2=(i+1)/steps,v2=(j+1)/lines;
    /* Fold square textile coordinates into a triangular drape while preserving fabric regions. */
@@ -108,7 +108,17 @@ function draw(timestamp=0){
    return [rotatedX*perspective,rotatedY*perspective]}
    const p=[point(u,v),point(u2,v),point(u2,v2),point(u,v2)];
    if(p.some(q=>!Number.isFinite(q[0])||!Number.isFinite(q[1])))continue;
-   const region=n===1?0:n===2?(triangle?(u>.16&&u<.84&&v>.16&&v<.84?0:1):(v<.5?0:1)):(triangle?(u<.13||u>.87||v<.13||v>.87?2:(u>v?0:1)):(v<.5?0:(u<.5?1:2)));
+   // Triangle and bandana patterns are designed on an OPEN SQUARE.
+   // Keep the same fabric coordinates in both open-square and folded-triangle views.
+   const cu=(u+u2)/2,cv=(v+v2)/2;
+   let region;
+   if(canUnfold){
+     if(n===1)region=0;
+     else if(n===2)region=(cu>=.13&&cu<=.87&&cv>=.13&&cv<=.87)?0:1;
+     else region=(cu<.06||cu>.94||cv<.06||cv>.94)?2:(cu+cv<1?0:1);
+   }else{
+     region=n===1?0:n===2?(cv<.5?0:1):(cv<.5?0:(cu<.5?1:2));
+   }
    ctx.fillStyle=paintFor(fabrics[region],region);ctx.beginPath();ctx.moveTo(...p[0]);for(let k=1;k<4;k++)ctx.lineTo(...p[k]);ctx.closePath();ctx.fill();
    ctx.shadowBlur=0;ctx.shadowOffsetY=0;ctx.strokeStyle='rgba(255,255,255,.06)';ctx.lineWidth=.4;ctx.stroke();
  }
