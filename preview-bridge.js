@@ -29,7 +29,7 @@ function syncViewButtons(){for(const [button,selected] of [[foldedButton,!unfold
  button.style.borderColor=selected?'#956d66':'#b88e86';
 }}
 syncViewButtons();
-old.parentNode.insertBefore(viewToggle,host);
+host.insertBefore(viewToggle,host.firstChild);
 const canvas=host.querySelector('canvas'),ctx=canvas.getContext('2d');
 canvas.setAttribute('role','img');
 canvas.setAttribute('tabindex','0');
@@ -66,8 +66,8 @@ function draw(timestamp=0){
  if(timestamp && timestamp-lastFrame<32){requestAnimationFrame(draw);return;}
  lastFrame=timestamp;
  const bow=result.classList.contains('active') && typeof state!=='undefined' && state.shape==='קשת';
- const canUnfold=typeof state!=='undefined' && ['משולש','בנדנה'].includes(state.shape);
- viewToggle.style.display=canUnfold?'flex':'none';
+ const canUnfold=typeof state!=='undefined' && ['משולש','בנדנה','משולש קטן','משולש גדול'].includes(state.shape);
+ viewToggle.style.setProperty('display',canUnfold?'flex':'none','important');
  host.style.display=bow?'none':'';old.style.display=bow?'':'none';
  const rect=canvas.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2);
  const w=Math.round(rect.width*d),h=Math.round(rect.height*d);
@@ -84,7 +84,7 @@ function draw(timestamp=0){
  ctx.translate(w/2,h/2+bob*s);ctx.scale(s,s);
  ctx.rotate(reduceMotion?0:Math.sin(time*.85)*.085);const shape=(typeof state!=='undefined'&&state.shape)||'משולש';
  
- const triangle=['משולש','בנדנה'].includes(shape) && !unfolded,n=(typeof state!=='undefined'&&state.pattern==='single')?1:(typeof state!=='undefined'&&state.pattern==='a')?2:3;
+ const triangle=['משולש','בנדנה','משולש קטן','משולש גדול'].includes(shape) && !unfolded,n=(typeof state!=='undefined'&&state.pattern==='single')?1:(typeof state!=='undefined'&&state.pattern==='a')?2:3;
  const fabrics=(typeof state!=='undefined'&&state.fabrics)||[];
  const squareShape=canUnfold && unfolded;
  const wide=shape==='בנדנה'?112:canUnfold?155:215,high=squareShape?(shape==='בנדנה'?112:155):shape==='בנדנה'?115:triangle?160:(shape==='סרט'?45:95);
