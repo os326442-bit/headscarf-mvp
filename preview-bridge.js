@@ -42,6 +42,8 @@ function draw(){
  if(active && w && h){
  time+=.018;const s=Math.min(w/600,h/350);ctx.save();ctx.translate(w/2,h/2);ctx.scale(s,s);
  ctx.rotate(Math.sin(time*.7)*.04);const shape=(typeof state!=='undefined'&&state.shape)||'משולש';
+ if(shape==='קשת'){host.style.display='none';old.style.display='';ctx.restore();requestAnimationFrame(draw);return;}
+ host.style.display='';old.style.display='none';
  const triangle=['משולש','בנדנה'].includes(shape),n=(typeof state!=='undefined'&&state.pattern==='single')?1:(typeof state!=='undefined'&&state.pattern==='a')?2:3;
  const fabrics=(typeof state!=='undefined'&&state.fabrics)||[];
  const wide=triangle?155:215,high=triangle?160:(shape==='סרט'?45:95);
