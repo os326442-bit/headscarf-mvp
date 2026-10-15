@@ -12,7 +12,7 @@ old.parentNode.insertBefore(host,old);
 old.style.display='none';
 const canvas=host.querySelector('canvas'),ctx=canvas.getContext('2d');
 if(!ctx){host.remove();old.style.display='';return;}
-let time=0,turn=0,drag=false,px=0;
+let time=0,turn=0,drag=false,px=0,lastFrame=0;
 const reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const palette={base:{'טבע':'#8b7359','מרווה':'#71806a','ים':'#557889','תכלת':'#8bb8c3','ורוד':'#c48e93','שמנת':'#e6dccb','שחור':'#282624','אפור':'#99958e'}};
 function color(item,i){
@@ -36,7 +36,9 @@ function paintFor(item,i){
  if(!fabricPatterns.has(src))fabricPatterns.set(src,ctx.createPattern(img,'repeat'));
  return fabricPatterns.get(src)||color(item,i);
 }
-function draw(){
+function draw(timestamp=0){
+ if(timestamp && timestamp-lastFrame<32){requestAnimationFrame(draw);return;}
+ lastFrame=timestamp;
  const bow=result.classList.contains('active') && typeof state!=='undefined' && state.shape==='קשת';
  host.style.display=bow?'none':'';old.style.display=bow?'':'none';
  const rect=canvas.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2);
