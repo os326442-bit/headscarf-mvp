@@ -22,6 +22,7 @@ function color(item,i){
  return ['#bc8d78','#718c82','#caa19b','#9a8795'][i%4];
 }
 const fabricImages=new Map();
+const fabricPatterns=new Map();
 function paintFor(item,i){
  if(!item||typeof fabricVisual!=='function')return color(item,i);
  const src=fabricVisual(item);
@@ -31,7 +32,8 @@ function paintFor(item,i){
  }
  const img=fabricImages.get(src);
  if(!img.complete||!img.naturalWidth)return color(item,i);
- return ctx.createPattern(img,'repeat')||color(item,i);
+ if(!fabricPatterns.has(src))fabricPatterns.set(src,ctx.createPattern(img,'repeat'));
+ return fabricPatterns.get(src)||color(item,i);
 }
 function draw(){
  const bow=result.classList.contains('active') && typeof state!=='undefined' && state.shape==='קשת';
@@ -49,16 +51,15 @@ function draw(){
  const fabrics=(typeof state!=='undefined'&&state.fabrics)||[];
  const wide=triangle?155:215,high=triangle?160:(shape==='סרט'?45:95);
  ctx.shadowColor='#805f5960';ctx.shadowBlur=8;ctx.shadowOffsetY=3;
- const steps=64,lines=38;
+ const steps=48,lines=30;
  for(let j=0;j<lines;j++)for(let i=0;i<steps;i++){
    const u=i/steps,v=j/lines,u2=(i+1)/steps,v2=(j+1)/lines;
    /* Show unfolded square for triangle designs, as in the pattern selector. */
    function point(a,b){const x=(a-.5)*wide*2,y=(b-.5)*high*2+Math.sin(a*10+time+b*3)*13+Math.cos(b*12-time*.8)*7;const z=Math.sin(a*8+time*.6)*22+Math.cos(b*7+time)*12;const spin=turn+time*.13;return [x*Math.cos(spin)+z*Math.sin(spin),y]}
    const p=[point(u,v),point(u2,v),point(u2,v2),point(u,v2)];
    const region=n===1?0:n===2?(triangle?(u>.16&&u<.84&&v>.16&&v<.84?0:1):(v<.5?0:1)):(triangle?(u<.13||u>.87||v<.13||v>.87?2:(u>v?0:1)):(v<.5?0:(u<.5?1:2)));
-   const base=color(fabrics[region],region);
    ctx.fillStyle=paintFor(fabrics[region],region);ctx.beginPath();ctx.moveTo(...p[0]);for(let k=1;k<4;k++)ctx.lineTo(...p[k]);ctx.closePath();ctx.fill();
-   ctx.shadowBlur=0;ctx.strokeStyle='rgba(255,255,255,.13)';ctx.lineWidth=.5;ctx.stroke();
+   ctx.shadowBlur=0;ctx.strokeStyle='rgba(255,255,255,.06)';ctx.lineWidth=.4;ctx.stroke();
  }
  ctx.restore();
  }
