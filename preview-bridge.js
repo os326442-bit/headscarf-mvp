@@ -73,7 +73,8 @@ function draw(timestamp=0){
  if(finish==='פרנזים'){
    ctx.strokeStyle='#bda194';ctx.lineWidth=1.5;
    for(let x=-wide+5;x<wide;x+=9){
-     const y=high+Math.sin((x/wide+1)*5+time)*8;
+     const edge=triangle?(-high+2*high*Math.max(.02,1-Math.abs(x/wide))):high;
+     const y=edge+Math.sin((x/wide+1)*5+time)*8;
      ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+Math.sin(time+x)*3,y+15);ctx.stroke();
    }
  }else if(finish==='שרשרת'){
