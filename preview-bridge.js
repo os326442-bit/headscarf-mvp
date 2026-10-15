@@ -13,6 +13,7 @@ old.style.display='none';
 const canvas=host.querySelector('canvas'),ctx=canvas.getContext('2d');
 if(!ctx){host.remove();old.style.display='';return;}
 let time=0,turn=0,drag=false,px=0;
+const reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const palette={base:{'טבע':'#8b7359','מרווה':'#71806a','ים':'#557889','תכלת':'#8bb8c3','ורוד':'#c48e93','שמנת':'#e6dccb','שחור':'#282624','אפור':'#99958e'}};
 function color(item,i){
  if(!item)return ['#dcb3ad','#b88781','#f0d4c8'][i%3];
@@ -42,9 +43,9 @@ function draw(){
  const w=Math.round(rect.width*d),h=Math.round(rect.height*d);
  if(w&&h&&(canvas.width!==w||canvas.height!==h)){canvas.width=w;canvas.height=h}
  ctx.clearRect(0,0,w,h);
- const active=result.classList.contains('active');
+ const active=result.classList.contains('active') && !document.hidden;
  if(active && w && h){
- time+=.018;const s=Math.min(w/600,h/350);ctx.save();ctx.translate(w/2,h/2);ctx.scale(s,s);
+ if(!reduceMotion)time+=.018;const s=Math.min(w/600,h/350);ctx.save();ctx.translate(w/2,h/2);ctx.scale(s,s);
  ctx.rotate(Math.sin(time*.7)*.04);const shape=(typeof state!=='undefined'&&state.shape)||'משולש';
  
  const triangle=['משולש','בנדנה'].includes(shape),n=(typeof state!=='undefined'&&state.pattern==='single')?1:(typeof state!=='undefined'&&state.pattern==='a')?2:3;
@@ -69,5 +70,6 @@ canvas.addEventListener('pointerdown',e=>{drag=true;px=e.clientX;canvas.setPoint
 canvas.addEventListener('pointermove',e=>{if(drag){turn+=(e.clientX-px)*.01;px=e.clientX}});
 canvas.addEventListener('pointerup',()=>drag=false);
 canvas.addEventListener('pointercancel',()=>drag=false);
+canvas.addEventListener('lostpointercapture',()=>drag=false);
 draw();
 })();
