@@ -70,13 +70,15 @@ function draw(timestamp=0){
  for(let j=0;j<lines;j++)for(let i=0;i<steps;i++){
    const u=i/steps,v=j/lines,u2=(i+1)/steps,v2=(j+1)/lines;
    /* Fold square textile coordinates into a triangular drape while preserving fabric regions. */
-   function point(a,b){const x=(a-.5)*wide*2;const fold=triangle?Math.max(.02,1-Math.abs(2*a-1)):1;const y=(triangle?-high+b*2*high*fold:(b-.5)*high*2)+Math.sin(a*10+time+b*3)*13*fold+Math.cos(b*12-time*.8)*7*fold;const z=(Math.sin(a*8+time*.6)*22+Math.cos(b*7+time)*12)*fold;const spin=turn+(reduceMotion?0:Math.sin(time*.58)*.55);
-   const pitch=tilt+(reduceMotion?0:Math.sin(time*.73)*.72);
+   function point(a,b){const x=(a-.5)*wide*2;const fold=triangle?Math.max(.02,1-Math.abs(2*a-1)):1;const y=(triangle?-high+b*2*high*fold:(b-.5)*high*2)+Math.sin(a*10+time+b*3)*13*fold+Math.cos(b*12-time*.8)*7*fold;
+   // Bend the textile into a shallow 3D drape; the center sits forward of the hems.
+   const z=(Math.sin(a*8+time*.6)*22+Math.cos(b*7+time)*12+65*Math.sin(Math.PI*b)*fold);const spin=turn+(reduceMotion?0:Math.sin(time*.58)*.55);
+   const pitch=tilt+(reduceMotion?0:Math.sin(time*.73)*.92);
    const rotatedX=x*Math.cos(spin)+z*Math.sin(spin);
    const depth=-x*Math.sin(spin)+z*Math.cos(spin);
    const rotatedY=y*Math.cos(pitch)-depth*Math.sin(pitch);
    const rotatedZ=y*Math.sin(pitch)+depth*Math.cos(pitch);
-   const perspective=650/(650+rotatedZ);
+   const perspective=540/(540+rotatedZ);
    return [rotatedX*perspective,rotatedY*perspective]}
    const p=[point(u,v),point(u2,v),point(u2,v2),point(u,v2)];
    if(p.some(q=>!Number.isFinite(q[0])||!Number.isFinite(q[1])))continue;
