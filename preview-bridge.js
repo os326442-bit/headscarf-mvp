@@ -24,7 +24,6 @@ function color(item,i){
 }
 const fabricImages=new Map();
 const fabricPatterns=new Map();
-let cachedCanvasWidth=0,cachedCanvasHeight=0;
 function paintFor(item,i){
  if(!item||typeof fabricVisual!=='function')return color(item,i);
  const src=fabricVisual(item);
@@ -46,7 +45,6 @@ function draw(timestamp=0){
  const w=Math.round(rect.width*d),h=Math.round(rect.height*d);
  if(w&&h&&(canvas.width!==w||canvas.height!==h)){
   canvas.width=w;canvas.height=h;
-  cachedCanvasWidth=w;cachedCanvasHeight=h;
   fabricPatterns.clear();
 }
  if(w&&h)ctx.clearRect(0,0,w,h);
