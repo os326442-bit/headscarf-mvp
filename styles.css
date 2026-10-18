@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Rubik:wght@300;400;500;600&display=swap');
 :root{--ink:#665A58;--muted:#776B70;--cream:#F8F5EF;--paper:#FFFCF8;--line:#E8DED8;--accent:#906F83;--gold:#A77F91;--sage:#B9C8C1;--blush:#DCC2BE}
 *{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Heebo,Assistant,sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}
@@ -290,3 +291,6 @@ button.primary,button.secondary,button.ghost,.choice-card,.pattern-card,.finish-
 
 /* Slightly reduce the קשת illustration only; keep its card dimensions unchanged. */
 .form-card .mini.mini-bow .bow-headband-img{width:82%!important;height:82%!important;object-fit:contain!important}
+
+/* English landing tagline: Josefin Sans Light */
+.hero .eyebrow{font-family:'Josefin Sans',sans-serif!important;font-weight:300!important;letter-spacing:.16em!important}
