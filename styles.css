@@ -281,3 +281,6 @@ button.primary,button.secondary,button.ghost,.choice-card,.pattern-card,.finish-
 /* Force new full-cover portrait visible in selection card */
 #choose .choice-card[data-cover="full"]>.approved-full-cover{display:flex!important;position:relative!important;height:240px!important;min-height:240px!important;overflow:visible!important;z-index:5!important}
 #choose .choice-card[data-cover="full"]>.approved-full-cover>img{display:block!important;position:relative!important;z-index:10!important;width:230px!important;height:230px!important;max-width:96%!important;object-fit:contain!important;opacity:1!important;visibility:visible!important;filter:none!important}
+
+/* Blend the approved full-cover artwork into the card; remove its pale rectangular JPEG background without affecting other cards. */
+#choose .choice-card[data-cover="full"]>.approved-full-cover>img{mix-blend-mode:multiply!important;background:transparent!important}
