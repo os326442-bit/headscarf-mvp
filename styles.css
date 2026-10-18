@@ -298,3 +298,6 @@ button.primary,button.secondary,button.ghost,.choice-card,.pattern-card,.finish-
 
 /* Light Hebrew description beneath the landing headline */
 .hero .lead{font-family:'Heebo',sans-serif!important;font-weight:300!important;line-height:1.85!important}
+
+/* Ensure the Hebrew supporting sentence visibly uses Heebo Light */
+#landing .hero-copy > p.lead{font-family:'Heebo',Arial,sans-serif!important;font-weight:300!important;font-size:clamp(18px,2vw,21px)!important;letter-spacing:.015em!important;line-height:1.95!important}
