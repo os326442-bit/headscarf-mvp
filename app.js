@@ -75,7 +75,7 @@ function renderForms(){
   if(!box)return;
   const triangleArt='assets/triangle-fashion-lineart.svg?v=20261018-triangle1';
   const longArt='assets/long-scarf-lineart.svg?v=20261018-clean2';
-  const bowArt='assets/bow-headband-exact.webp?v=20261007-bow-exact';
+  const bowArt='assets/headband-minimal-traced.svg?v=20261018-headband1';
   const ribbonArt='assets/ribbon-black-transparent.svg?v=20261007-blackline1';
   box.innerHTML=(forms[state.cover]||forms.both).map(([id,name])=>
     `<button type="button" class="form-card" data-shape="${name}">
