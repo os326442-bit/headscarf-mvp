@@ -4,7 +4,7 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>מטפחת שהיא רק שלך</title>
 <meta name="description" content="עיצוב אישי של מטפחת — בחרי צורה, בדים ופיניש ובני משהו שהוא רק שלך.">
-<link rel="stylesheet" href="styles.css?v=20261018-font-preview1">
+<link rel="stylesheet" href="styles.css?v=20261018-font-preview-reverted">
 </head>
 <body>
 <header class="topbar"><div class="brand">עיצוב אישי<span>•</span></div><div class="progress"><i></i><i></i><i></i><i></i><i></i></div><button id="restart" class="ghost">התחלה מחדש</button></header>
@@ -12,8 +12,7 @@
 <main>
 <section id="landing" class="screen active hero">
   <div class="hero-copy">
-    <p class="eyebrow font-preview-target">DESIGNED BY YOU</p>
-    <div class="font-preview-picker" aria-label="תצוגת פונטים למשפט באנגלית"><span>תצוגת פונטים:</span><button type="button" class="font-preview-option selected" data-font-preview="josefin" aria-pressed="true">Josefin Sans</button><button type="button" class="font-preview-option" data-font-preview="raleway" aria-pressed="false">Raleway</button><button type="button" class="font-preview-option" data-font-preview="quicksand" aria-pressed="false">Quicksand</button></div>
+    <p class="eyebrow">DESIGNED BY YOU</p>
     <h1>יש דברים שלא נועדו להיבחר מהמדף,<br><em>תיצרי את היופי שאת רוצה להרגיש.</em></h1>
     <p class="lead">מטפחת שנבנית לפי הטעם שלך, התקציב שלך והתחושה שאת רוצה ליצור.</p>
     <div class="actions"><button class="primary" data-go="choose">לעצב לבד</button><button class="secondary" data-go="help">תעזרו לי ליצור</button></div>
@@ -106,12 +105,4 @@
 .fabric-edit-instruction{font-size:15px;line-height:1.8;color:#665a55;background:#f8f0ed;border:1px solid #eadcd6;border-radius:12px;padding:12px 16px;margin:14px 0 18px;text-align:right}
 #livePreview .live-part{cursor:pointer}#livePreview .live-part.editing{outline:3px solid #a86c7d;outline-offset:-3px}
 </style>
-<script>
-document.querySelectorAll('[data-font-preview]').forEach(button=>button.addEventListener('click',()=>{
-  const target=document.querySelector('.font-preview-target');
-  const fonts={josefin:"'Josefin Sans',sans-serif",raleway:"'Raleway',sans-serif",quicksand:"'Quicksand',sans-serif"};
-  target.style.setProperty('--preview-font',fonts[button.dataset.fontPreview]);
-  document.querySelectorAll('[data-font-preview]').forEach(b=>{const selected=b===button;b.classList.toggle('selected',selected);b.setAttribute('aria-pressed',String(selected));});
-}));
-</script>
 </body></html>
