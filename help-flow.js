@@ -14,9 +14,10 @@ function extraNeeded(){return step===2&&(answers.color==="specific");}
 function render(){
 if(step>=questions.length){renderRecommendation();return;}
 const q=questions[step],isOutfit=step===2&&answers.purpose==="outfit";
+const palettes={harmonious:["#C9D2BF","#9FB39C","#738E78"],complementary:["#6E8E9B","#D49B78","#E8D8BD"],bold:["#334D65","#E7B84B","#A74852"]};
 if(isOutfit)answers.color="specific";
 root.innerHTML='<div class="help-counter">שאלה '+(step+1)+' מתוך 5</div><div class="help-progress"><span style="width:'+((step+1)*20)+'%"></span></div><h3>'+esc(isOutfit?"מה הצבע של הבגד שאליו תרצי להתאים את המטפחת?":q.title)+'</h3>'+
-(isOutfit?'':('<div class="help-options">'+q.options.map(([value,label,description])=>'<button type="button" class="help-option'+(answers[q.key]===value?' chosen':'')+'" data-answer="'+value+'">'+esc(label)+(description?'<span class="help-option-description">'+esc(description)+'</span>':'')+'</button>').join('')+'</div>'))+
+(isOutfit?'':('<div class="help-options">'+q.options.map(([value,label,description])=>'<button type="button" class="help-option'+(answers[q.key]===value?' chosen':'')+'" data-answer="'+value+'">'+esc(label)+(description?'<span class="help-option-description">'+esc(description)+'</span>':'')+(step===3?'<span class="help-color-dots">'+palettes[value].map(color=>'<i style="background:'+color+'"></i>').join('')+'</span>':'')+'</button>').join('')+'</div>'))+
 (extraNeeded()||isOutfit?'<label class="help-text-label">'+(isOutfit?"צבע הבגד":"הצבעים שתרצי לשלב")+'<input id="guidedColor" type="text" maxlength="100" placeholder="למשל: ירוק מרווה, שמנת, בורדו" value="'+esc(answers.outfitColor||"")+'"></label>':'')+
 '<div class="help-nav"><button type="button" data-prev '+(step===0?'disabled':'')+'>לשאלה הקודמת</button><button type="button" class="primary" data-next>ממשיכים</button></div>';
 root.querySelectorAll("[data-answer]").forEach(b=>b.addEventListener("click",()=>{answers[q.key]=b.dataset.answer;if(step===0)syncOutfit();render();}));
