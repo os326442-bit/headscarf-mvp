@@ -311,4 +311,4 @@ button.primary,button.secondary,button.ghost,.choice-card,.pattern-card,.finish-
 @media(max-width:700px){#landing .hero-copy > p.lead{font-size:clamp(14px,3.5vw,17px)!important}}
 
 /* Subtle emphasis on 'את' in the main landing headline */
-#landing .hero-you-emphasis{font-weight:700!important;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.12em}
+#landing .hero-you-emphasis{font-weight:700!important;text-decoration:none}
