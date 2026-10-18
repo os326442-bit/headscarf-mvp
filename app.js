@@ -225,7 +225,7 @@ function chooseFinish(button){
   state.finish=button.dataset.finish==="none"?"נקי":
     button.dataset.finish==="tiara"?"נזר בד":
     button.dataset.finish==="fringe"?"פרנזים":"שרשרת";
-  state.price=basePrice()+(state.fabrics.length>=2?45:0)+(state.fabrics.length>=3?35:0)+(+button.dataset.add||0);
+  state.price=basePrice()+(state.fabrics.filter(Boolean).length>=2?45:0)+(state.fabrics.filter(Boolean).length>=3?35:0)+(+button.dataset.add||0);
   $("#finalPrice").textContent=state.price;
   $("#summaryShape").textContent=state.shape;
   $("#summaryPattern").textContent=state.pattern==="single"?"בד ראשוני בלבד":state.pattern==="a"?"תבנית א׳":"תבנית ב׳";
@@ -254,14 +254,38 @@ document.addEventListener("click",event=>{
   const pattern=event.target.closest("[data-pattern]");
   if(pattern){choosePattern(pattern.dataset.pattern);return;}
 
+  const part=event.target.closest("#livePreview .live-part");
+  if(part){
+    const index=Number((part.className.match(/part-(\d+)/)||[])[1])-1;
+    if(index>=0&&index<previewSlots()){
+      window.selectedFabricSlot=index;
+      document.querySelectorAll("#livePreview .live-part").forEach((el,i)=>el.classList.toggle("editing",i===index));
+    }
+    return;
+  }
+
   const swatch=event.target.closest(".swatch");
   if(swatch){
-    swatch.classList.toggle("selected");
     const item=swatch.dataset.group+":"+swatch.dataset.name;
-    if(swatch.classList.contains("selected"))state.fabrics.push(item);
-    else state.fabrics=state.fabrics.filter(x=>x!==item);
-    state.price=basePrice()+(state.fabrics.length>=2?45:0)+(state.fabrics.length>=3?35:0);
-    updatePrice();updateNote();renderLivePreview();return;
+    const slots=previewSlots();
+    const existing=state.fabrics.indexOf(item);
+    if(existing>=0){
+      state.fabrics[existing]=null;
+      if(window.selectedFabricSlot===existing)window.selectedFabricSlot=existing;
+    }else{
+      let index=Number.isInteger(window.selectedFabricSlot)?window.selectedFabricSlot:-1;
+      if(index<0||index>=slots)index=Array.from({length:slots},(_,i)=>i).find(i=>!state.fabrics[i]);
+      if(index===undefined)index=0;
+      state.fabrics[index]=item;
+      window.selectedFabricSlot=index;
+    }
+    state.fabrics.length=Math.min(state.fabrics.length,slots);
+    document.querySelectorAll(".swatch").forEach(el=>el.classList.toggle("selected",state.fabrics.includes(el.dataset.group+":"+el.dataset.name)));
+    const count=state.fabrics.filter(Boolean).length;
+    state.price=basePrice()+(count>=2?45:0)+(count>=3?35:0);
+    updatePrice();updateNote();renderLivePreview();
+    document.querySelectorAll("#livePreview .live-part").forEach((el,i)=>el.classList.toggle("editing",i===window.selectedFabricSlot));
+    return;
   }
 
   const finish=event.target.closest(".finish-card");
