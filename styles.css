@@ -271,3 +271,9 @@ button.primary,button.secondary,button.ghost,.choice-card,.pattern-card,.finish-
 .form-card .mini.mini-long{background:#F2EAE4!important;background-image:none!important;background-blend-mode:normal!important;overflow:hidden!important}
 .form-card .mini.mini-long::before,.form-card .mini.mini-long::after{content:none!important;display:none!important;background:none!important}
 .form-card .mini.mini-long .shape-scarf-img{display:block!important;width:94%!important;height:94%!important;object-fit:contain!important;mix-blend-mode:normal!important;background:transparent!important}
+
+/* Triangle and bandana share one clean illustration; bandana shown smaller. Remove legacy layered artwork. */
+.form-card .mini.mini-triangle,.form-card .mini.mini-bandana{background:#F2EAE4!important;background-image:none!important;overflow:hidden!important}
+.form-card .mini.mini-triangle::before,.form-card .mini.mini-triangle::after,.form-card .mini.mini-bandana::before,.form-card .mini.mini-bandana::after{content:none!important;display:none!important}
+.form-card .mini.mini-triangle .shape-scarf-img{width:94%!important;height:94%!important;object-fit:contain!important}
+.form-card .mini.mini-bandana .shape-scarf-img{width:69%!important;height:69%!important;object-fit:contain!important}
