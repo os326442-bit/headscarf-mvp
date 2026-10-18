@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Raleway:wght@300&family=Quicksand:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Rubik:wght@300;400;500;600&display=swap');
 :root{--ink:#665A58;--muted:#776B70;--cream:#F8F5EF;--paper:#FFFCF8;--line:#E8DED8;--accent:#906F83;--gold:#A77F91;--sage:#B9C8C1;--blush:#DCC2BE}
 *{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Heebo,Assistant,sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}
@@ -290,3 +291,10 @@ button.primary,button.secondary,button.ghost,.choice-card,.pattern-card,.finish-
 
 /* Slightly reduce the קשת illustration only; keep its card dimensions unchanged. */
 .form-card .mini.mini-bow .bow-headband-img{width:82%!important;height:82%!important;object-fit:contain!important}
+
+/* Temporary on-page typography comparison for the English hero tagline */
+.hero .font-preview-target{font-family:'Josefin Sans',sans-serif!important;font-size:clamp(16px,2.2vw,24px)!important;font-weight:300!important;letter-spacing:.16em!important;line-height:1.5!important;white-space:nowrap}
+.hero .font-preview-target{font-family:var(--preview-font,'Josefin Sans',sans-serif)!important}
+.font-preview-picker{display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:8px;margin:-6px 0 22px;font-family:Rubik,sans-serif;font-size:11px;color:#8c7b7e}
+.font-preview-option{border:1px solid #ded2d1;background:transparent;border-radius:30px;padding:6px 10px;font:300 11px Rubik,sans-serif;color:#76656d;cursor:pointer}
+.font-preview-option.selected{background:#eee5e7;border-color:#bba9b0;color:#594b50}
