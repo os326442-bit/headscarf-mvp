@@ -287,3 +287,6 @@ button.primary,button.secondary,button.ghost,.choice-card,.pattern-card,.finish-
 
 /* The full-cover artwork now has real alpha transparency. */
 #choose .choice-card[data-cover="full"]>.approved-full-cover>img{mix-blend-mode:normal!important;background:transparent!important}
+
+/* Slightly reduce the קשת illustration only; keep its card dimensions unchanged. */
+.form-card .mini.mini-bow .bow-headband-img{width:82%!important;height:82%!important;object-fit:contain!important}
