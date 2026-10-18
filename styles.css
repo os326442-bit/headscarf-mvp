@@ -305,3 +305,7 @@ button.primary,button.secondary,button.ghost,.choice-card,.pattern-card,.finish-
 /* Center the Hebrew landing description on one line when space permits */
 #landing .hero-copy > p.lead{max-width:none!important;width:max-content!important;max-width:100%!important;margin-left:auto!important;margin-right:auto!important;text-align:center!important;white-space:nowrap!important;font-size:clamp(12px,1.6vw,19px)!important;letter-spacing:0!important}
 @media(max-width:700px){#landing .hero-copy > p.lead{font-size:clamp(10px,2.7vw,15px)!important}}
+
+/* Allow the new landing copy to appear as two deliberate centered lines */
+#landing .hero-copy > p.lead{white-space:normal!important;width:100%!important;max-width:100%!important;text-align:center!important;font-size:clamp(16px,1.6vw,19px)!important;line-height:1.9!important}
+@media(max-width:700px){#landing .hero-copy > p.lead{font-size:clamp(14px,3.5vw,17px)!important}}
