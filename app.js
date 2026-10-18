@@ -79,7 +79,7 @@ function renderForms(){
   const ribbonArt='assets/ribbon-black-transparent.svg?v=20261007-blackline1';
   box.innerHTML=(forms[state.cover]||forms.both).map(([id,name])=>
     `<button type="button" class="form-card" data-shape="${name}">
-      <div class="mini mini-${id}">${id==="bow"?'<img class="shape-scarf-img bow-headband-img" src="'+bowArt+'" alt="">':(id==="ribbon"?'<img class="shape-scarf-img ribbon-img" src="'+ribbonArt+'" alt="">':(id==="long"?'<img class="shape-scarf-img" src="'+longArt+'" alt="">':(id==="triangle"||id==="bandana"?'<img class="shape-scarf-img" src="'+triangleArt+'" alt="">':"")))}</div><strong>${name}</strong>
+      <div class="mini mini-${id}">${id==="bow"?'<img class="shape-scarf-img bow-headband-img" src="'+bowArt+'" alt="">':(id==="ribbon"?' ' :(id==="long"?'<img class="shape-scarf-img" src="'+longArt+'" alt="">':(id==="triangle"||id==="bandana"?'<img class="shape-scarf-img" src="'+triangleArt+'" alt="">':"")))}</div><strong>${name}</strong>
       <small>${name==="לונג"||name==="משולש"?"כיסוי מלא":"חצי כיסוי"}</small>
     </button>`
   ).join("");
