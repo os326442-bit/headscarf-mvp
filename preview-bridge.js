@@ -7,7 +7,7 @@ if(!result||!old)return;
 const host=document.createElement('div');
 host.id='floatingPreviewHost';
 host.style.cssText='max-width:720px;margin:0 auto 16px;position:relative';
-host.innerHTML='<canvas id="floatingPreviewCanvas" aria-label="הדמיית המטפחת המרחפת" style="display:block;width:100%;height:350px;border-radius:24px;background:radial-gradient(ellipse,#fffdfb,#f3e3df);touch-action:none"></canvas><p style="text-align:center;font-size:12px;color:#937b75">גרסת בדיקה: הדמיית תנועה לפי הבדים שנבחרו</p>';
+host.innerHTML='<canvas id="floatingPreviewCanvas" aria-label="הדמיית המטפחת המרחפת" style="display:block;width:100%;height:350px;border-radius:24px;background:radial-gradient(ellipse,#fffdfb,#f3e3df);touch-action:none"></canvas>';
 old.parentNode.insertBefore(host,old);
 old.style.display='none';
 let unfolded=false;
