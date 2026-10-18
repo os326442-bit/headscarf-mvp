@@ -277,3 +277,7 @@ button.primary,button.secondary,button.ghost,.choice-card,.pattern-card,.finish-
 .form-card .mini.mini-triangle::before,.form-card .mini.mini-triangle::after,.form-card .mini.mini-bandana::before,.form-card .mini.mini-bandana::after{content:none!important;display:none!important}
 .form-card .mini.mini-triangle .shape-scarf-img{width:94%!important;height:94%!important;object-fit:contain!important}
 .form-card .mini.mini-bandana .shape-scarf-img{width:69%!important;height:69%!important;object-fit:contain!important}
+
+/* Force new full-cover portrait visible in selection card */
+#choose .choice-card[data-cover="full"]>.approved-full-cover{display:flex!important;position:relative!important;height:240px!important;min-height:240px!important;overflow:visible!important;z-index:5!important}
+#choose .choice-card[data-cover="full"]>.approved-full-cover>img{display:block!important;position:relative!important;z-index:10!important;width:230px!important;height:230px!important;max-width:96%!important;object-fit:contain!important;opacity:1!important;visibility:visible!important;filter:none!important}
