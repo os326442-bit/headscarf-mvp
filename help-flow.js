@@ -6,7 +6,7 @@ const questions=[
 {key:"style",title:"איזה מראה היית רוצה ליצור?",options:[["delicate","עדין ונקי"],["balanced","מאוזן ומעניין"],["bold","עשיר ובולט"]]},
 {key:"color",title:"יש צבעים שחשוב לך לשלב במטפחת?",options:[["specific","כן, יש לי צבע או כמה צבעים שאני רוצה לשלב"],["outfit","אני רוצה שהצבעים יתאימו לבגד מסוים"],["unsure","אין לי צבעים בראש, אשמח להמלצה"]]},
 {key:"palette",title:"איזה שילוב צבעים הכי מדבר אלייך?",options:[["harmonious","צבעים הרמוניים"],["complementary","צבעים משלימים"],["bold","צבעים נועזים ובולטים"]]},
-{key:"fabric",title:"איזה שילוב בדים הכי מדבר אלייך?",options:[["subtle","נגיעה עדינה של ייחודיות"],["balanced","שילוב מאוזן של בדים"],["rich","מראה עשיר ומלא אופי"],["surprise","תפתיעו אותי!"]]}
+{key:"fabric",title:"איזה שילוב בדים הכי מדבר אלייך?",options:[["subtle","נגיעה עדינה של ייחודיות","בד חלק כבסיס, עם תוספת קטנה של הדפס או תחרה."],["balanced","שילוב מאוזן של בדים","בדים חלקים ומיוחדים שמשתלבים יחד ונותנים מקום זה לזה."],["rich","מראה עשיר ומלא אופי","הדפסים, תחרות ומרקמים שתופסים מקום מרכזי בעיצוב."],["surprise","תפתיעו אותי!","אשמח שתבחרו בשבילי שילוב שמתאים לסגנון שלי."]]}
 ];
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 function syncOutfit(){if(answers.purpose==="outfit"){answers.color="outfit";}else if(answers.color==="outfit" && !answers.outfitColor)answers.color="unsure";}
@@ -16,7 +16,7 @@ if(step>=questions.length){renderRecommendation();return;}
 const q=questions[step],isOutfit=step===2&&answers.purpose==="outfit";
 if(isOutfit)answers.color="outfit";
 root.innerHTML='<div class="help-counter">שאלה '+(step+1)+' מתוך 5</div><div class="help-progress"><span style="width:'+((step+1)*20)+'%"></span></div><h3>'+esc(isOutfit?"מה הצבע של הבגד שאליו תרצי להתאים את המטפחת?":q.title)+'</h3>'+
-(isOutfit?'':('<div class="help-options">'+q.options.map(([value,label])=>'<button type="button" class="help-option'+(answers[q.key]===value?' chosen':'')+'" data-answer="'+value+'">'+esc(label)+'</button>').join('')+'</div>'))+
+(isOutfit?'':('<div class="help-options">'+q.options.map(([value,label,description])=>'<button type="button" class="help-option'+(answers[q.key]===value?' chosen':'')+'" data-answer="'+value+'">'+esc(label)+(description?'<span class="help-option-description">'+esc(description)+'</span>':'')+'</button>').join('')+'</div>'))+
 (extraNeeded()||isOutfit?'<label class="help-text-label">'+(isOutfit||answers.color==="outfit"?"צבע הבגד":"הצבעים שתרצי לשלב")+'<input id="guidedColor" type="text" maxlength="100" placeholder="למשל: ירוק מרווה, שמנת, בורדו" value="'+esc(answers.outfitColor||"")+'"></label>':'')+
 '<div class="help-nav"><button type="button" data-prev '+(step===0?'disabled':'')+'>לשאלה הקודמת</button><button type="button" class="primary" data-next>ממשיכים</button></div>';
 root.querySelectorAll("[data-answer]").forEach(b=>b.addEventListener("click",()=>{answers[q.key]=b.dataset.answer;if(step===0)syncOutfit();render();}));
@@ -56,8 +56,14 @@ const unique=[...new Map(candidates.map(p=>[p.pattern+"|"+p.fabrics.join("|"),p]
 return unique.slice(0,5);
 }
 function preview(p){
-const fills=p.fabrics.map(f=>fabricVisual(f));
-return '<div class="guided-samples">'+fills.map((fill,i)=>'<div class="guided-sample" title="'+esc(p.fabrics[i].split(":")[1])+'" style="'+(fill.startsWith("#")?"background:"+fill:"background-image:url(&quot;"+fill+"&quot;);background-size:cover;background-position:center")+'"></div>').join("")+'</div>';
+const original={shape:state.shape,pattern:state.pattern,fabrics:state.fabrics.slice()};
+state.shape=p.shape;state.pattern=p.pattern;state.fabrics=p.fabrics.slice();
+renderLivePreview();
+const live=document.getElementById("livePreview");
+const html=live?'<div class="guided-live-preview">'+live.outerHTML.replace('id="livePreview"','id="guidedPreview"')+'</div>':'';
+state.shape=original.shape;state.pattern=original.pattern;state.fabrics=original.fabrics;
+renderLivePreview();
+return html;
 }
 function renderRecommendation(){
 if(!history.length){history=build();current=0;}
