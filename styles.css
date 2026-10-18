@@ -266,3 +266,8 @@ button.primary,button.secondary,button.ghost,.choice-card,.pattern-card,.finish-
 #landing .hero-copy .lead{margin:24px auto 0;max-width:560px;text-align:center}
 #landing .actions{justify-content:center;margin-top:24px}
 @media(max-width:700px){#landing .hero-copy h1{font-size:clamp(43px,10.5vw,59px)!important;line-height:1.2!important}#landing .hero-copy h1 em{font-size:.96em;margin-top:.24em}#landing .hero-copy .lead{margin-top:20px}}
+
+/* Long scarf: render exactly one transparent illustration, no legacy background art */
+.form-card .mini.mini-long{background:#F2EAE4!important;background-image:none!important;background-blend-mode:normal!important;overflow:hidden!important}
+.form-card .mini.mini-long::before,.form-card .mini.mini-long::after{content:none!important;display:none!important;background:none!important}
+.form-card .mini.mini-long .shape-scarf-img{display:block!important;width:94%!important;height:94%!important;object-fit:contain!important;mix-blend-mode:normal!important;background:transparent!important}
