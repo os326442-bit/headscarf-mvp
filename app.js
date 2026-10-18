@@ -80,7 +80,7 @@ function renderForms(){
   box.innerHTML=(forms[state.cover]||forms.both).map(([id,name])=>
     `<button type="button" class="form-card" data-shape="${name}">
       <div class="mini mini-${id}">${id==="bow"?'<img class="shape-scarf-img bow-headband-img" src="'+bowArt+'" alt="">':(id==="ribbon"?' ' :(id==="long"?'<img class="shape-scarf-img" src="'+longArt+'" alt="">':(id==="triangle"||id==="bandana"?'<img class="shape-scarf-img" src="'+triangleArt+'" alt="">':"")))}</div><strong>${name}</strong>
-      <small>${id==="long"?"60×180 ס״מ":(name==="לונג"||name==="משולש"?"כיסוי מלא":"חצי כיסוי")}</small>
+      <small>${id==="long"?"60×180 ס״מ":id==="triangle"?"100×100 ס״מ":id==="bandana"?"60×60 ס״מ":(name==="לונג"||name==="משולש"?"כיסוי מלא":"חצי כיסוי")}</small>
     </button>`
   ).join("");
 }
