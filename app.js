@@ -10,8 +10,11 @@ const forms={
 };
 
 const backStack=[];
+let guidedMode=false;
+
 
 function restartDesign(){
+  guidedMode=false;
   state.cover=null;state.shape="משולש קטן";state.pattern="single";state.finish="נקי";state.price=109;state.fabrics=[];
   backStack.length=0;
   $$(".swatch.selected").forEach(x=>x.classList.remove("selected"));
@@ -240,13 +243,13 @@ document.addEventListener("click",event=>{
   if(back){event.preventDefault();goBack();return;}
 
   const go=event.target.closest("[data-go]");
-  if(go){event.preventDefault();show(go.dataset.go);return;}
+  if(go){event.preventDefault();if(go.dataset.go==="help"){guidedMode=true;show("choose");return;}if(go.dataset.go==="choose" && event.target.closest("#landing"))guidedMode=false;show(go.dataset.go);return;}
 
   const cover=event.target.closest("[data-cover]");
   if(cover){chooseCover(cover.dataset.cover);return;}
 
   const form=event.target.closest(".form-card");
-  if(form){state.shape=form.dataset.shape;renderPatterns();show("pattern");return;}
+  if(form){state.shape=form.dataset.shape;renderPatterns();if(guidedMode && typeof window.startGuidedWizard==="function"){window.startGuidedWizard();show("help");}else show("pattern");return;}
 
   const pattern=event.target.closest("[data-pattern]");
   if(pattern){choosePattern(pattern.dataset.pattern);return;}
