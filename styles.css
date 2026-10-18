@@ -284,3 +284,6 @@ button.primary,button.secondary,button.ghost,.choice-card,.pattern-card,.finish-
 
 /* Blend the approved full-cover artwork into the card; remove its pale rectangular JPEG background without affecting other cards. */
 #choose .choice-card[data-cover="full"]>.approved-full-cover>img{mix-blend-mode:multiply!important;background:transparent!important}
+
+/* The full-cover artwork now has real alpha transparency. */
+#choose .choice-card[data-cover="full"]>.approved-full-cover>img{mix-blend-mode:normal!important;background:transparent!important}
